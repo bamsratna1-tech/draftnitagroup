@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nitta Group Catalog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Swing Animation */
+        @keyframes swing {
+            20% { transform: rotate3d(0, 0, 1, 15deg); }
+            40% { transform: rotate3d(0, 0, 1, -10deg); }
+            60% { transform: rotate3d(0, 0, 1, 5deg); }
+            80% { transform: rotate3d(0, 0, 1, -5deg); }
+            to { transform: rotate3d(0, 0, 1, 0deg); }
+        }
+
+        .swing-on-scroll {
+            transform-origin: top center;
+        }
+        
+        .animate-swing {
+            animation: swing 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+
+        /* Slide animations for page transitions */
+        .page {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        .page.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Glassmorphism Classes */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .glass-button {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.15);
+        }
+
+        /* Smooth image loading */
+        img {
+            transition: opacity 0.3s ease-in-out;
+        }
+        img[loading] {
+            opacity: 0;
+        }
+        img.loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased overflow-x-hidden bg-slate-50">
+
+    <!-- PAGE 1: HOME (DIVISIONS) -->
+    <div id="homePage" class="page active min-h-screen">
+        
+        <!-- Header (Not Sticky, Scrolls naturally) -->
+        <header class="bg-slate-900 text-white rounded-b-[40px] shadow-lg flex flex-col items-center justify-center pt-12 pb-10 relative overflow-hidden">
+            <!-- Background accent -->
+            <div class="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent"></div>
+            
+            <div class="w-28 h-28 rounded-full border-[3px] border-slate-700 bg-white flex items-center justify-center p-1 shadow-2xl mb-4 relative z-10">
+                <!-- GANTI URL GAMBAR DI BAWAH INI DENGAN LOGO ASLI -->
+                <img src="aset/grup.jpeg" alt="Logo Nitta Group" class="w-full h-full object-cover rounded-full" onerror="this.src='https://placehold.co/400x400/1e293b/ffffff?text=NG'">
+            </div>
+            <h1 class="text-2xl font-bold tracking-wide relative z-10">Nitta Group</h1>
+            <p class="text-sm text-slate-400 mt-1 relative z-10">Pusat Belanja & Layanan Terpercaya</p>
+        </header>
+
+        <!-- Divisions List -->
+        <main class="container mx-auto px-4 mt-8 flex-1 pb-12">
+            <div class="grid grid-cols-2 gap-4" id="divisionsContainer">
+                <!-- Division cards will be injected here via JS -->
+            </div>
+        </main>
+
+        <!-- Footer & Maps Section -->
+        <footer class="bg-slate-900 text-white rounded-t-[40px] shadow-[0_-15px_40px_-15px_rgba(0,0,0,0.3)] pt-12 pb-8 mt-auto px-6 relative z-10">
+            <!-- Decorative notch -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-1.5 bg-slate-700 rounded-full mt-3"></div>
+            
+            <div class="text-center mb-8 px-2">
+                <h3 class="text-xl font-bold mb-3 tracking-wide">Nitta Group</h3>
+                <p class="text-sm text-slate-400 leading-relaxed">Berkomitmen menghadirkan layanan dan produk berkualitas terbaik, mulai dari kebutuhan kesehatan hingga camilan nikmat untuk Anda dan keluarga tercinta.</p>
+            </div>
+
+            <!-- Maps Card -->
+            <div class="mb-5 rounded-2xl overflow-hidden shadow-lg border border-slate-700 bg-slate-800 p-1">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.578663855512!2d112.2338006!3d-7.5342004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e783fc11f592ad1%3A0x6b107e0c4a4e1b8b!2sJl.%20Laksda%20Adi%20Sucipto%20No.14A%2C%20Sambongdukuh%2C%20Kec.%20Jombang%2C%20Kabupaten%20Jombang%2C%20Jawa%20Timur%2061413!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+                    width="100%" 
+                    height="180" 
+                    style="border:0; border-radius: 12px;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <!-- CTA Maps -->
+            <a href="https://maps.app.goo.gl/YourMapLinkHere" target="_blank" class="flex justify-center items-center gap-2 w-full bg-slate-800 hover:bg-slate-700 text-white py-3.5 rounded-xl font-semibold mb-8 transition-colors border border-slate-700 active:scale-95">
+                <i class="fas fa-location-arrow text-blue-400"></i> Buka Navigasi Maps
+            </a>
+
+            <!-- Copyright -->
+            <div class="border-t border-slate-800 pt-6 flex flex-col items-center justify-center">
+                <p class="text-xs text-slate-500 font-medium">&copy; 2024 Nitta Group. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- PAGE 2: CATALOG (PRODUCTS) -->
+    <div id="catalogPage" class="page min-h-screen bg-slate-50 pb-28">
+        
+        <!-- Header with Back Button (Glassmorphism) -->
+        <header class="glass-header p-4 sticky top-0 z-20 flex items-center justify-between">
+            <button onclick="goHome()" class="w-10 h-10 flex items-center justify-center text-slate-700 bg-white rounded-full shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors active:scale-95">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h2 id="catalogTitle" class="text-lg font-bold text-center flex-1 pr-10 text-slate-800 tracking-tight">Katalog</h2>
+        </header>
+
+        <!-- Product List -->
+        <main class="container mx-auto px-4 py-6 flex-1">
+            <div id="productsContainer" class="grid grid-cols-2 gap-4">
+                <!-- Products will be injected here via JS -->
+            </div>
+        </main>
+
+        <!-- Floating Cart Button -->
+        <div class="fixed bottom-6 right-0 left-0 flex justify-center z-30 px-4 pointer-events-none">
+            <button onclick="openCart()" class="glass-button pointer-events-auto w-full max-w-md py-3.5 px-5 rounded-2xl flex justify-between items-center text-slate-800 font-semibold transform transition active:scale-95">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <div class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-pink-600">
+                            <i class="fas fa-shopping-basket text-lg"></i>
+                        </div>
+                        <span id="cartBadge" class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full shadow-md hidden border-2 border-white">0</span>
+                    </div>
+                    <div class="flex flex-col items-start">
+                        <span class="text-[10px] text-slate-500 font-medium uppercase tracking-wider">Total Pesanan</span>
+                        <span id="cartTotalPreview" class="text-slate-800 font-black text-sm">Rp 0</span>
+                    </div>
+                </div>
+                <div class="bg-slate-900 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shadow-sm">
+                    Checkout <i class="fas fa-chevron-right text-[10px]"></i>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Button (Global) -->
+    <a href="https://wa.me/6281233250989?text=Halo%20Admin%20Nitta%20Group,%20saya%20ingin%20bertanya%20sesuatu..." target="_blank" class="fixed bottom-28 right-5 z-40 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-[0_4px_20px_rgba(34,197,94,0.4)] hover:bg-green-600 transition-transform active:scale-90 border-2 border-white">
+        <i class="fab fa-whatsapp text-3xl"></i>
+        <!-- Ping Animation -->
+        <span class="absolute top-0 right-0 w-3 h-3 bg-red-500 border-2 border-white rounded-full animate-ping"></span>
+        <span class="absolute top-0 right-0 w-3 h-3 bg-red-500 border-2 border-white rounded-full"></span>
+    </a>
+
+    <!-- MODAL: CART / CHECKOUT -->
+    <div id="cartModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden flex flex-col justify-end transition-opacity opacity-0">
+        <div class="bg-white w-full max-w-md mx-auto rounded-t-[32px] h-[85vh] flex flex-col transform translate-y-full transition-transform duration-300 shadow-2xl" id="cartContent">
+            
+            <!-- Modal Header -->
+            <div class="p-5 border-b border-gray-100 flex justify-between items-center bg-white rounded-t-[32px] relative z-20">
+                <h3 class="text-xl font-bold text-slate-800">Keranjang Belanja</h3>
+                <button onclick="closeCart()" class="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-slate-700 bg-slate-100 rounded-full transition-colors active:scale-95">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Cart Items -->
+            <div class="flex-1 overflow-y-auto p-5 relative overscroll-contain bg-slate-50/50">
+                <div id="cartItemsList" class="flex flex-col gap-3">
+                    <!-- Cart items injected here -->
+                </div>
+                <div id="emptyCartMessage" class="absolute inset-0 flex flex-col items-center justify-center text-slate-400 bg-transparent z-10 hidden">
+                    <div class="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mb-4 text-slate-300">
+                        <i class="fas fa-box-open text-3xl"></i>
+                    </div>
+                    <p class="font-medium text-slate-500">Keranjang masih kosong.</p>
+                    <p class="text-xs mt-1 text-slate-400">Yuk, pilih produk favoritmu!</p>
+                </div>
+            </div>
+
+            <!-- Checkout Section -->
+            <div class="p-6 border-t border-gray-100 bg-white shadow-[0_-10px_20px_-10px_rgba(0,0,0,0.05)]">
+                <div class="flex justify-between items-end mb-5">
+                    <span class="text-slate-500 font-medium text-sm">Total Pembayaran</span>
+                    <span id="finalTotal" class="text-2xl font-black text-slate-900">Rp 0</span>
+                </div>
+                <button onclick="checkoutToWA()" class="w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-bold text-base flex justify-center items-center gap-2 transition-transform active:scale-[0.98] shadow-lg shadow-green-500/30">
+                    <i class="fab fa-whatsapp text-xl"></i> Kirim Pesanan ke WA
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- DATA ---
+        
+        // Nomor WhatsApp Admin
+        const waNumber = "6281233250989"; 
+
+        const divisions = [
+            { id: 'medika', name: 'Apotek Nitta Medika', img: 'aset/apotek.jpeg' },
+            { id: 'superfood', name: 'Superfood Indonesia', img: 'aset/super.jpeg' },
+            { id: 'bross', name: 'Nitta Bross Jombang', img: 'aset/bros.jpeg' },
+            { id: 'lemari', name: 'Lemari Kedua', img: 'aset/lemari.jpeg' },
+            { id: 'slondok', name: 'Krupuk Slondok', img: 'aset/krupuk.jpeg' },
+            { id: 'nira', name: 'Nira Shop', img: 'aset/nira.jpeg' }
+        ];
+
+        const productsData = {
+            medika: Array.from({length: 20}, (_, i) => ({ id: `med_${i+1}`, name: `Produk Apotek ${i+1}`, price: 10000 + (i*1500), img: `https://picsum.photos/seed/med_${i+1}/400/400`, desc: 'Produk kesehatan & obat-obatan.' })),
+            superfood: Array.from({length: 10}, (_, i) => ({ id: `sup_${i+1}`, name: `Superfood ${i+1}`, price: 25000 + (i*2000), img: `https://picsum.photos/seed/sup_${i+1}/400/400`, desc: 'Makanan organik sehat berkualitas.' })),
+            bross: Array.from({length: 20}, (_, i) => ({ id: `bro_${i+1}`, name: `Bross Premium ${i+1}`, price: 15000 + (i*1000), img: `https://picsum.photos/seed/bro_${i+1}/400/400`, desc: 'Aksesoris bross cantik & elegan.' })),
+            lemari: Array.from({length: 10}, (_, i) => ({ id: `lem_${i+1}`, name: `Pakaian Thrift ${i+1}`, price: 50000 + (i*5000), img: `https://picsum.photos/seed/lem_${i+1}/400/400`, desc: 'Pakaian preloved kondisi sangat baik.' })),
+            slondok: Array.from({length: 4}, (_, i) => ({ id: `slo_${i+1}`, name: `Krupuk Slondok ${i+1}`, price: 12000 + (i*1000), img: `https://picsum.photos/seed/slo_${i+1}/400/400`, desc: 'Krupuk tradisional renyah gurih.' })),
+            nira: Array.from({length: 10}, (_, i) => ({ id: `nir_${i+1}`, name: `Kue & Camilan ${i+1}`, price: 20000 + (i*3000), img: `https://picsum.photos/seed/nir_${i+1}/400/400`, desc: 'Kue manis, lembut, dan lezat.' }))
+        };
+
+        // State Aplikasi
+        let cart = {}; 
+        let currentDivisionId = null; 
+
+        // --- UTILITIES ---
+
+        const formatRupiah = (number) => {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(number);
+        };
+
+        function getProductById(id) {
+            for (const category in productsData) {
+                const foundProduct = productsData[category].find(p => p.id === id);
+                if (foundProduct) return foundProduct;
+            }
+            return null;
+        }
+
+        // --- RENDER FUNCTIONS ---
+
+        function renderDivisions() {
+            const container = document.getElementById('divisionsContainer');
+            container.innerHTML = '';
+
+            divisions.forEach((div, index) => {
+                const card = document.createElement('div');
+                card.className = `bg-white rounded-[24px] shadow-sm border border-slate-100 p-4 flex flex-col items-center justify-center text-center cursor-pointer transition-transform transform active:scale-95 swing-on-scroll`;
+                card.style.animationDelay = `${index * 0.1}s`;
+
+                card.innerHTML = `
+                    <div class="w-20 h-20 rounded-full overflow-hidden border-[3px] border-slate-50 mb-3 shadow-sm bg-gray-50 flex items-center justify-center flex-shrink-0">
+                        <img src="${div.img}" alt="${div.name}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x400/f8fafc/64748b?text=img'">
+                    </div>
+                    <h3 class="font-bold text-sm text-slate-800 leading-tight">${div.name}</h3>
+                `;
+
+                card.onclick = () => openCatalog(div);
+                container.appendChild(card);
+            });
+
+            setupScrollAnimations();
+        }
+
+        function setupScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-swing');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.swing-on-scroll').forEach(el => observer.observe(el));
+        }
+
+        function openCatalog(division) {
+            currentDivisionId = division.id;
+            document.getElementById('homePage').classList.remove('active');
+            document.getElementById('catalogPage').classList.add('active');
+            document.getElementById('catalogTitle').innerText = division.name;
+            window.scrollTo(0, 0);
+            renderProducts();
+            updateCartUI();
+        }
+
+        function goHome() {
+            document.getElementById('catalogPage').classList.remove('active');
+            document.getElementById('homePage').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function renderProducts() {
+            const container = document.getElementById('productsContainer');
+            container.innerHTML = '';
+
+            const productsToRender = productsData[currentDivisionId] || [];
+
+            productsToRender.forEach(prod => {
+                const qty = cart[prod.id] || 0;
+                
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-[20px] shadow-sm overflow-hidden flex flex-col border border-slate-100 relative';
+                
+                let badgeHtml = '';
+                if (qty > 0) {
+                    badgeHtml = `<div class="absolute top-2 right-2 bg-pink-500 text-white text-xs font-bold w-7 h-7 rounded-full flex items-center justify-center z-10 shadow-lg border-2 border-white">${qty}</div>`;
+                }
+
+                card.innerHTML = `
+                    ${badgeHtml}
+                    <div class="relative w-full pt-[100%] bg-slate-50">
+                        <img src="${prod.img}" alt="${prod.name}" class="absolute top-0 left-0 w-full h-full object-cover" onload="this.classList.add('loaded')">
+                    </div>
+                    <div class="p-3.5 flex-1 flex flex-col">
+                        <h3 class="font-bold text-sm text-slate-800 leading-tight mb-1 line-clamp-2">${prod.name}</h3>
+                        <p class="text-[10px] text-slate-400 mb-2 line-clamp-1">${prod.desc}</p>
+                        <div class="font-black text-pink-600 text-sm mb-4">${formatRupiah(prod.price)}</div>
+                        
+                        <div class="mt-auto">
+                            ${qty === 0 ? `
+                                <button onclick="updateCart('${prod.id}', 1)" class="w-full bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold py-2.5 rounded-xl transition-colors flex justify-center items-center gap-1 active:scale-95">
+                                    <i class="fas fa-plus"></i> Tambah
+                                </button>
+                            ` : `
+                                <div class="flex items-center justify-between bg-slate-50 rounded-xl p-1 border border-slate-200">
+                                    <button onclick="updateCart('${prod.id}', -1)" class="w-8 h-8 flex items-center justify-center bg-white rounded-lg shadow-sm text-slate-600 active:scale-95">
+                                        <i class="fas fa-minus text-xs"></i>
+                                    </button>
+                                    <span class="font-bold text-sm w-8 text-center text-slate-800">${qty}</span>
+                                    <button onclick="updateCart('${prod.id}', 1)" class="w-8 h-8 flex items-center justify-center bg-pink-500 rounded-lg shadow-sm text-white active:scale-95">
+                                        <i class="fas fa-plus text-xs"></i>
+                                    </button>
+                                </div>
+                            `}
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // --- CART LOGIC ---
+
+        function updateCart(productId, change) {
+            const currentQty = cart[productId] || 0;
+            const newQty = currentQty + change;
+
+            if (newQty <= 0) {
+                delete cart[productId];
+            } else {
+                cart[productId] = newQty;
+            }
+
+            renderProducts(); 
+            updateCartUI();
+            
+            // Re-render modal if it is currently open
+            if(!document.getElementById('cartModal').classList.contains('hidden')) {
+                renderCartModal();
+            }
+        }
+
+        function getCartDetails() {
+            let totalItems = 0;
+            let totalPrice = 0;
+            let items = [];
+
+            for (const [id, qty] of Object.entries(cart)) {
+                const product = getProductById(id);
+                if (product) {
+                    totalItems += qty;
+                    totalPrice += (product.price * qty);
+                    items.push({ product, qty });
+                }
+            }
+
+            return { totalItems, totalPrice, items };
+        }
+
+        function updateCartUI() {
+            const { totalItems, totalPrice } = getCartDetails();
+            const badge = document.getElementById('cartBadge');
+            const totalPreview = document.getElementById('cartTotalPreview');
+
+            if (totalItems > 0) {
+                badge.innerText = totalItems;
+                badge.classList.remove('hidden');
+                totalPreview.innerText = formatRupiah(totalPrice);
+            } else {
+                badge.classList.add('hidden');
+                totalPreview.innerText = 'Rp 0';
+            }
+        }
+
+        // --- CART MODAL ---
+
+        function openCart() {
+            const modal = document.getElementById('cartModal');
+            const content = document.getElementById('cartContent');
+            
+            modal.classList.remove('hidden');
+            // Allow browser to render display:block before transitioning opacity
+            void modal.offsetWidth; 
+            
+            modal.classList.add('opacity-100');
+            modal.classList.remove('opacity-0');
+            
+            content.classList.remove('translate-y-full');
+            content.classList.add('translate-y-0');
+
+            renderCartModal();
+        }
+
+        function closeCart() {
+            const modal = document.getElementById('cartModal');
+            const content = document.getElementById('cartContent');
+            
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0');
+            
+            content.classList.remove('translate-y-0');
+            content.classList.add('translate-y-full');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300); // Matches transition duration
+        }
+
+        function renderCartModal() {
+            const listContainer = document.getElementById('cartItemsList');
+            const emptyMsg = document.getElementById('emptyCartMessage');
+            const finalTotal = document.getElementById('finalTotal');
+            
+            const { items, totalPrice } = getCartDetails();
+
+            finalTotal.innerText = formatRupiah(totalPrice);
+
+            if (items.length === 0) {
+                listContainer.innerHTML = '';
+                emptyMsg.classList.remove('hidden');
+                return;
+            }
+
+            emptyMsg.classList.add('hidden');
+            let html = '';
+
+            items.forEach(({ product, qty }) => {
+                html += `
+                    <div class="flex items-center gap-4 bg-white p-3 rounded-[20px] border border-slate-100 shadow-sm">
+                        <img src="${product.img}" alt="${product.name}" class="w-16 h-16 rounded-xl object-cover bg-slate-50 shrink-0" onload="this.classList.add('loaded')" style="opacity: 1;">
+                        <div class="flex-1 min-w-0">
+                            <h4 class="font-bold text-sm leading-tight text-slate-800 truncate">${product.name}</h4>
+                            <div class="text-pink-600 font-black text-sm mt-1">${formatRupiah(product.price)}</div>
+                        </div>
+                        <div class="flex items-center bg-slate-50 rounded-xl p-1 border border-slate-200 shrink-0 shadow-sm">
+                            <button onclick="updateCart('${product.id}', -1)" class="w-7 h-7 flex items-center justify-center text-slate-500 hover:text-black bg-white rounded-lg shadow-sm active:scale-95 transition-all">
+                                <i class="fas fa-minus text-[10px]"></i>
+                            </button>
+                            <span class="font-bold text-sm w-7 text-center text-slate-800">${qty}</span>
+                            <button onclick="updateCart('${product.id}', 1)" class="w-7 h-7 flex items-center justify-center text-white bg-pink-500 rounded-lg shadow-sm active:scale-95 transition-all">
+                                <i class="fas fa-plus text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            listContainer.innerHTML = html;
+        }
+
+        // --- WHATSAPP INTEGRATION ---
+
+        function checkoutToWA() {
+            const { items, totalPrice } = getCartDetails();
+            
+            if (items.length === 0) {
+                alert("Keranjang Anda masih kosong.");
+                return;
+            }
+
+            let message = `Halo Admin *Nitta Group*, saya ingin memesan produk berikut:\n\n`;
+            
+            items.forEach((item, index) => {
+                message += `▪️ *${item.product.name}*\n`;
+                message += `   ${item.qty} x ${formatRupiah(item.product.price)} = ${formatRupiah(item.product.price * item.qty)}\n`;
+            });
+
+            message += `\n*Total Pesanan: ${formatRupiah(totalPrice)}*\n\n`;
+            message += `Mohon diinfokan mengenai biaya ongkos kirim dan ketersediaan stoknya ya. Terima kasih! 🙏`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const waUrl = `https://wa.me/${waNumber}?text=${encodedMessage}`;
+            
+            window.open(waUrl, '_blank');
+        }
+
+        // --- INIT ---
+        window.onload = () => {
+            renderDivisions();
+        };
+
+    </script>
+</body>
+</html>
