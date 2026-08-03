@@ -59,8 +59,15 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.15);
+            border: 1px solid rgba(236, 72, 153, 0.1); /* Pink border tint */
+            box-shadow: 0 10px 40px -10px rgba(236, 72, 153, 0.15); /* Pink shadow */
+        }
+
+        /* Modern Subtle Dot Pattern - PINK THEME */
+        .bg-pattern {
+            background-color: #fdf2f8; /* Soft pink muda */
+            background-image: radial-gradient(rgba(236, 72, 153, 0.15) 1.5px, transparent 1.5px); /* Titik pink */
+            background-size: 24px 24px;
         }
 
         /* Smooth image loading */
@@ -75,22 +82,29 @@
         }
     </style>
 </head>
-<body class="text-slate-800 antialiased overflow-x-hidden bg-slate-50">
+<body class="text-slate-800 antialiased overflow-x-hidden bg-pattern relative z-0">
+
+    <!-- Decorative Background Glow/Orbs (Premium Pink Feel) -->
+    <div class="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
+        <div class="absolute top-[-5%] left-[-10%] w-72 h-72 bg-pink-400/20 rounded-full blur-3xl"></div>
+        <div class="absolute top-[40%] right-[-10%] w-80 h-80 bg-rose-300/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-[-5%] left-[20%] w-64 h-64 bg-fuchsia-300/20 rounded-full blur-3xl"></div>
+    </div>
 
     <!-- PAGE 1: HOME (DIVISIONS) -->
     <div id="homePage" class="page active min-h-screen">
         
-        <!-- Header (Not Sticky, Scrolls naturally) -->
-        <header class="bg-slate-900 text-white rounded-b-[40px] shadow-lg flex flex-col items-center justify-center pt-12 pb-10 relative overflow-hidden">
+        <!-- Header (Pink Gradient) -->
+        <header class="bg-gradient-to-br from-pink-500 to-rose-500 text-white rounded-b-[40px] shadow-lg flex flex-col items-center justify-center pt-12 pb-10 relative overflow-hidden">
             <!-- Background accent -->
-            <div class="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent"></div>
             
-            <div class="w-28 h-28 rounded-full border-[3px] border-slate-700 bg-white flex items-center justify-center p-1 shadow-2xl mb-4 relative z-10">
+            <div class="w-28 h-28 rounded-full border-[3px] border-pink-300 bg-white flex items-center justify-center p-1 shadow-2xl mb-4 relative z-10">
                 <!-- GANTI URL GAMBAR DI BAWAH INI DENGAN LOGO ASLI -->
-                <img src="aset/grup.jpeg" alt="Logo Nitta Group" class="w-full h-full object-cover rounded-full" onerror="this.src='https://placehold.co/400x400/1e293b/ffffff?text=NG'">
+                <img src="aset/grup.jpeg" alt="Logo Nitta Group" class="w-full h-full object-cover rounded-full" onerror="this.src='https://placehold.co/400x400/db2777/ffffff?text=NG'">
             </div>
             <h1 class="text-2xl font-bold tracking-wide relative z-10">Nitta Group</h1>
-            <p class="text-sm text-slate-400 mt-1 relative z-10">Pusat Belanja & Layanan Terpercaya</p>
+            <p class="text-sm text-pink-100 mt-1 relative z-10">Pusat Belanja & Layanan Terpercaya</p>
         </header>
 
         <!-- Divisions List -->
@@ -100,18 +114,18 @@
             </div>
         </main>
 
-        <!-- Footer & Maps Section -->
-        <footer class="bg-slate-900 text-white rounded-t-[40px] shadow-[0_-15px_40px_-15px_rgba(0,0,0,0.3)] pt-12 pb-8 mt-auto px-6 relative z-10">
+        <!-- Footer & Maps Section (Pink Gradient) -->
+        <footer class="bg-gradient-to-br from-pink-500 to-rose-500 text-white rounded-t-[40px] shadow-[0_-15px_40px_-15px_rgba(236,72,153,0.3)] pt-12 pb-8 mt-auto px-6 relative z-10">
             <!-- Decorative notch -->
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-1.5 bg-slate-700 rounded-full mt-3"></div>
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-1.5 bg-pink-300 rounded-full mt-3"></div>
             
             <div class="text-center mb-8 px-2">
                 <h3 class="text-xl font-bold mb-3 tracking-wide">Nitta Group</h3>
-                <p class="text-sm text-slate-400 leading-relaxed">Berkomitmen menghadirkan layanan dan produk berkualitas terbaik, mulai dari kebutuhan kesehatan hingga camilan nikmat untuk Anda dan keluarga tercinta.</p>
+                <p class="text-sm text-pink-50 leading-relaxed">Berkomitmen menghadirkan layanan dan produk berkualitas terbaik, mulai dari kebutuhan kesehatan hingga camilan nikmat untuk Anda dan keluarga tercinta.</p>
             </div>
 
             <!-- Maps Card -->
-            <div class="mb-5 rounded-2xl overflow-hidden shadow-lg border border-slate-700 bg-slate-800 p-1">
+            <div class="mb-5 rounded-2xl overflow-hidden shadow-lg border border-pink-400 bg-pink-600/50 p-1 backdrop-blur-sm">
                 <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.578663855512!2d112.2338006!3d-7.5342004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e783fc11f592ad1%3A0x6b107e0c4a4e1b8b!2sJl.%20Laksda%20Adi%20Sucipto%20No.14A%2C%20Sambongdukuh%2C%20Kec.%20Jombang%2C%20Kabupaten%20Jombang%2C%20Jawa%20Timur%2061413!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
                     width="100%" 
@@ -124,19 +138,19 @@
             </div>
 
             <!-- CTA Maps -->
-            <a href="https://maps.app.goo.gl/YourMapLinkHere" target="_blank" class="flex justify-center items-center gap-2 w-full bg-slate-800 hover:bg-slate-700 text-white py-3.5 rounded-xl font-semibold mb-8 transition-colors border border-slate-700 active:scale-95">
-                <i class="fas fa-location-arrow text-blue-400"></i> Buka Navigasi Maps
+            <a href="https://maps.google.com/?q=Jl.+Laksda+Adi+Sucipto+No.14A,+Sambongdukuh,+Jombang" target="_blank" class="flex justify-center items-center gap-2 w-full bg-pink-600 hover:bg-pink-700 text-white py-3.5 rounded-xl font-semibold mb-8 transition-colors border border-pink-400 active:scale-95 shadow-md">
+                <i class="fas fa-location-arrow text-pink-200"></i> Buka Navigasi Maps
             </a>
 
             <!-- Copyright -->
-            <div class="border-t border-slate-800 pt-6 flex flex-col items-center justify-center">
-                <p class="text-xs text-slate-500 font-medium">&copy; 2024 Nitta Group. All rights reserved.</p>
+            <div class="border-t border-pink-400/50 pt-6 flex flex-col items-center justify-center">
+                <p class="text-xs text-pink-100 font-medium">&copy; 2024 Nitta Group. All rights reserved.</p>
             </div>
         </footer>
     </div>
 
     <!-- PAGE 2: CATALOG (PRODUCTS) -->
-    <div id="catalogPage" class="page min-h-screen bg-slate-50 pb-28">
+    <div id="catalogPage" class="page min-h-screen pb-28">
         
         <!-- Header with Back Button (Glassmorphism) -->
         <header class="glass-header p-4 sticky top-0 z-20 flex items-center justify-between">
@@ -168,7 +182,7 @@
                         <span id="cartTotalPreview" class="text-slate-800 font-black text-sm">Rp 0</span>
                     </div>
                 </div>
-                <div class="bg-slate-900 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shadow-sm">
+                <div class="bg-rose-500 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shadow-sm shadow-rose-500/30">
                     Checkout <i class="fas fa-chevron-right text-[10px]"></i>
                 </div>
             </button>
@@ -234,7 +248,10 @@
             { id: 'bross', name: 'Nitta Bross Jombang', img: 'aset/bros.jpeg' },
             { id: 'lemari', name: 'Lemari Kedua', img: 'aset/lemari.jpeg' },
             { id: 'slondok', name: 'Krupuk Slondok', img: 'aset/krupuk.jpeg' },
-            { id: 'nira', name: 'Nira Shop', img: 'aset/nira.jpeg' }
+            { id: 'nira', name: 'Nira Shop', img: 'aset/nira.jpeg' },
+            { id: 'mc', name: 'Freelance MC', img: 'aset/mc.jpeg' },
+            { id: 'marketing', name: 'Freelance Marketing', img: 'aset/marketing.jpeg' },
+            { id: 'buku', name: 'Buku Nitta', img: 'aset/buku.jpeg' }
         ];
 
         const productsData = {
@@ -243,7 +260,10 @@
             bross: Array.from({length: 20}, (_, i) => ({ id: `bro_${i+1}`, name: `Bross Premium ${i+1}`, price: 15000 + (i*1000), img: `https://picsum.photos/seed/bro_${i+1}/400/400`, desc: 'Aksesoris bross cantik & elegan.' })),
             lemari: Array.from({length: 10}, (_, i) => ({ id: `lem_${i+1}`, name: `Pakaian Thrift ${i+1}`, price: 50000 + (i*5000), img: `https://picsum.photos/seed/lem_${i+1}/400/400`, desc: 'Pakaian preloved kondisi sangat baik.' })),
             slondok: Array.from({length: 4}, (_, i) => ({ id: `slo_${i+1}`, name: `Krupuk Slondok ${i+1}`, price: 12000 + (i*1000), img: `https://picsum.photos/seed/slo_${i+1}/400/400`, desc: 'Krupuk tradisional renyah gurih.' })),
-            nira: Array.from({length: 10}, (_, i) => ({ id: `nir_${i+1}`, name: `Kue & Camilan ${i+1}`, price: 20000 + (i*3000), img: `https://picsum.photos/seed/nir_${i+1}/400/400`, desc: 'Kue manis, lembut, dan lezat.' }))
+            nira: Array.from({length: 10}, (_, i) => ({ id: `nir_${i+1}`, name: `Kue & Camilan ${i+1}`, price: 20000 + (i*3000), img: `https://picsum.photos/seed/nir_${i+1}/400/400`, desc: 'Kue manis, lembut, dan lezat.' })),
+            mc: Array.from({length: 5}, (_, i) => ({ id: `mc_${i+1}`, name: `Jasa MC Acara ${i+1}`, price: 500000 + (i*100000), img: `https://picsum.photos/seed/mc_${i+1}/400/400`, desc: 'MC Profesional untuk pernikahan dan event.' })),
+            marketing: Array.from({length: 5}, (_, i) => ({ id: `mar_${i+1}`, name: `Jasa Marketing ${i+1}`, price: 350000 + (i*50000), img: `https://picsum.photos/seed/mar_${i+1}/400/400`, desc: 'Bantu tingkatkan penjualan bisnismu.' })),
+            buku: Array.from({length: 10}, (_, i) => ({ id: `buk_${i+1}`, name: `Buku Inspirasi Nitta ${i+1}`, price: 85000 + (i*5000), img: `https://picsum.photos/seed/buk_${i+1}/400/400`, desc: 'Kumpulan cerita inspiratif & motivasi.' }))
         };
 
         // State Aplikasi
@@ -272,12 +292,17 @@
 
             divisions.forEach((div, index) => {
                 const card = document.createElement('div');
-                card.className = `bg-white rounded-[24px] shadow-sm border border-slate-100 p-4 flex flex-col items-center justify-center text-center cursor-pointer transition-transform transform active:scale-95 swing-on-scroll`;
+                
+                // Trik: Jika ini adalah item ganjil terakhir (Item ke-9), buat posisinya ke tengah (center)
+                const isLastOddItem = (index === divisions.length - 1) && (divisions.length % 2 !== 0);
+                const layoutClass = isLastOddItem ? "col-span-2 justify-self-center w-[calc(50%-0.5rem)] min-w-[150px]" : "";
+
+                card.className = `bg-white rounded-[24px] shadow-sm border border-pink-100 p-4 flex flex-col items-center justify-center text-center cursor-pointer transition-transform transform active:scale-95 swing-on-scroll ${layoutClass}`;
                 card.style.animationDelay = `${index * 0.1}s`;
 
                 card.innerHTML = `
-                    <div class="w-20 h-20 rounded-full overflow-hidden border-[3px] border-slate-50 mb-3 shadow-sm bg-gray-50 flex items-center justify-center flex-shrink-0">
-                        <img src="${div.img}" alt="${div.name}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x400/f8fafc/64748b?text=img'">
+                    <div class="w-20 h-20 rounded-full overflow-hidden border-[3px] border-pink-50 mb-3 shadow-sm bg-pink-50/50 flex items-center justify-center flex-shrink-0">
+                        <img src="${div.img}" alt="${div.name}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x400/fdf2f8/db2777?text=img'">
                     </div>
                     <h3 class="font-bold text-sm text-slate-800 leading-tight">${div.name}</h3>
                 `;
@@ -346,7 +371,7 @@
                         
                         <div class="mt-auto">
                             ${qty === 0 ? `
-                                <button onclick="updateCart('${prod.id}', 1)" class="w-full bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold py-2.5 rounded-xl transition-colors flex justify-center items-center gap-1 active:scale-95">
+                                <button onclick="updateCart('${prod.id}', 1)" class="w-full bg-rose-500 hover:bg-rose-600 text-white text-xs font-bold py-2.5 rounded-xl transition-colors flex justify-center items-center gap-1 active:scale-95 shadow-sm shadow-rose-500/30">
                                     <i class="fas fa-plus"></i> Tambah
                                 </button>
                             ` : `
