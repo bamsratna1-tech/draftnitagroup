@@ -202,18 +202,43 @@
         <div class="bg-white w-full max-w-md mx-auto rounded-t-[32px] h-[85vh] flex flex-col transform translate-y-full transition-transform duration-300 shadow-2xl" id="cartContent">
             
             <!-- Modal Header -->
-            <div class="p-5 border-b border-gray-100 flex justify-between items-center bg-white rounded-t-[32px] relative z-20">
+            <div class="p-5 border-b border-gray-100 flex justify-between items-center bg-white rounded-t-[32px] relative z-20 shrink-0">
                 <h3 class="text-xl font-bold text-slate-800">Keranjang Belanja</h3>
                 <button onclick="closeCart()" class="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-slate-700 bg-slate-100 rounded-full transition-colors active:scale-95">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
 
-            <!-- Cart Items -->
+            <!-- Cart Items & Customer Form (Scrollable Area) -->
             <div class="flex-1 overflow-y-auto p-5 relative overscroll-contain bg-slate-50/50">
-                <div id="cartItemsList" class="flex flex-col gap-3">
+                
+                <!-- List Belanjaan -->
+                <div id="cartItemsList" class="flex flex-col gap-3 mb-6">
                     <!-- Injected here -->
                 </div>
+
+                <!-- Formulir Data Pemesan (Otomatis Sembunyi Jika Keranjang Kosong) -->
+                <div id="customerFormSection" class="hidden bg-white p-5 rounded-[20px] border border-slate-200 shadow-sm mb-4">
+                    <h4 class="font-bold text-slate-800 text-sm mb-4 border-b border-slate-100 pb-2 flex items-center gap-2">
+                        <i class="fas fa-truck text-slate-400"></i> Informasi Pengiriman
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">Nama Lengkap <span class="text-red-500">*</span></label>
+                            <input type="text" id="custName" placeholder="Masukkan nama Anda" class="w-full bg-slate-50 border border-slate-200 text-sm rounded-xl px-3.5 py-3 focus:outline-none focus:ring-2 focus:ring-slate-800 focus:border-transparent transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">No. WhatsApp <span class="text-red-500">*</span></label>
+                            <input type="tel" id="custWA" placeholder="Contoh: 08123456789" class="w-full bg-slate-50 border border-slate-200 text-sm rounded-xl px-3.5 py-3 focus:outline-none focus:ring-2 focus:ring-slate-800 focus:border-transparent transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">Alamat Lengkap <span class="text-red-500">*</span></label>
+                            <textarea id="custAddress" rows="3" placeholder="Nama Jalan, RT/RW, Desa, Kec, Kota, Patokan" class="w-full bg-slate-50 border border-slate-200 text-sm rounded-xl px-3.5 py-3 focus:outline-none focus:ring-2 focus:ring-slate-800 focus:border-transparent transition-all resize-none"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pesan Keranjang Kosong -->
                 <div id="emptyCartMessage" class="absolute inset-0 flex flex-col items-center justify-center text-slate-400 bg-transparent z-10 hidden">
                     <div class="w-20 h-20 bg-slate-200 rounded-full flex items-center justify-center mb-4 text-slate-400">
                         <i class="fas fa-box-open text-3xl"></i>
@@ -224,13 +249,13 @@
             </div>
 
             <!-- Checkout Section -->
-            <div class="p-6 border-t border-gray-100 bg-white shadow-[0_-10px_20px_-10px_rgba(0,0,0,0.05)]">
+            <div class="p-6 border-t border-gray-100 bg-white shadow-[0_-10px_20px_-10px_rgba(0,0,0,0.05)] shrink-0">
                 <div class="flex justify-between items-end mb-5">
-                    <span class="text-slate-500 font-medium text-sm">Total Pembayaran</span>
+                    <span class="text-slate-500 font-medium text-sm">Total Belanja</span>
                     <span id="finalTotal" class="text-2xl font-black text-slate-900">Rp 0</span>
                 </div>
                 <button onclick="checkoutToWA()" class="w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-bold text-base flex justify-center items-center gap-2 transition-transform active:scale-[0.98] shadow-lg shadow-green-500/30">
-                    <i class="fab fa-whatsapp text-xl"></i> Kirim Pesanan ke WA
+                    <i class="fab fa-whatsapp text-xl"></i> Lanjut ke WA Admin
                 </button>
             </div>
         </div>
@@ -438,7 +463,7 @@
             const container = document.getElementById('productsContainer');
             container.innerHTML = '';
 
-            // --- CTA KHUSUS APOTEK NITTA MEDIKA ---
+           // --- CTA KHUSUS APOTEK NITTA MEDIKA ---
             if (currentDivisionId === 'medika') {
                 const waMessage = encodeURIComponent("Halo Admin Apotek Nitta Medika, saya butuh obat/produk kesehatan yang tidak ada di etalase katalog. Apakah bisa dibantu?");
                 const banner = document.createElement('div');
@@ -705,6 +730,7 @@
             const listContainer = document.getElementById('cartItemsList');
             const emptyMsg = document.getElementById('emptyCartMessage');
             const finalTotal = document.getElementById('finalTotal');
+            const formSection = document.getElementById('customerFormSection'); // Ambil elemen form
             
             const { items, totalPrice } = getCartDetails();
 
@@ -713,16 +739,18 @@
             if (items.length === 0) {
                 listContainer.innerHTML = '';
                 emptyMsg.classList.remove('hidden');
+                formSection.classList.add('hidden'); // Sembunyikan form kalau keranjang kosong
                 return;
             }
 
             emptyMsg.classList.add('hidden');
+            formSection.classList.remove('hidden'); // Tampilkan form kalau ada belanjaan
+            
             let html = '';
 
             items.forEach(({ product, qty }) => {
                 html += `
                     <div class="flex items-center gap-4 bg-white p-3 rounded-[20px] border border-slate-200 shadow-sm">
-                        <!-- TAMBAHAN: loading="lazy" (Mempercepat loading web) -->
                         <img src="${product.img}" alt="${product.name}" loading="lazy" class="w-16 h-16 rounded-xl object-cover bg-slate-50 shrink-0" onload="this.classList.add('loaded')" style="opacity: 1;">
                         <div class="flex-1 min-w-0">
                             <h4 class="font-bold text-sm leading-tight text-slate-800 truncate">${product.name}</h4>
@@ -754,15 +782,33 @@
                 return;
             }
 
-            let message = `Halo Admin *Nitta Group*, saya ingin memesan produk berikut:\n\n`;
+            // Ambil data dari input form
+            const custName = document.getElementById('custName').value.trim();
+            const custWA = document.getElementById('custWA').value.trim();
+            const custAddress = document.getElementById('custAddress').value.trim();
+
+            // Validasi: Cek apakah ada kolom yang kosong
+            if (!custName || !custWA || !custAddress) {
+                alert("Mohon lengkapi Nama, No. WhatsApp, dan Alamat Anda sebelum melanjutkan pesanan.");
+                return;
+            }
+
+            // Mulai merangkai pesan WhatsApp
+            let message = `Halo Admin *Nitta Group*, saya ingin melakukan pemesanan.\n\n`;
             
+            message += `*📋 DATA PEMESAN*\n`;
+            message += `▪️ Nama : ${custName}\n`;
+            message += `▪️ No. WA : ${custWA}\n`;
+            message += `▪️ Alamat : ${custAddress}\n\n`;
+
+            message += `*🛍️ RINCIAN PESANAN*\n`;
             items.forEach((item, index) => {
                 message += `▪️ *${item.product.name}*\n`;
                 message += `   ${item.qty} x ${formatRupiah(item.product.price)} = ${formatRupiah(item.product.price * item.qty)}\n`;
             });
 
-            message += `\n*Total Pesanan: ${formatRupiah(totalPrice)}*\n\n`;
-            message += `Mohon diinfokan mengenai biaya ongkos kirim dan ketersediaan stoknya ya. Terima kasih! 🙏`;
+            message += `\n*Total Harga: ${formatRupiah(totalPrice)}*\n\n`;
+            message += `Mohon dibantu info total biaya beserta ongkos kirim ke alamat saya ya. Terima kasih! 🙏`;
 
             const encodedMessage = encodeURIComponent(message);
             const waUrl = `https://wa.me/${waNumber}?text=${encodedMessage}`;
