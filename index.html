@@ -99,6 +99,7 @@
             <div class="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent"></div>
             
             <div class="w-28 h-28 rounded-full border-[4px] border-slate-800 bg-white flex items-center justify-center p-1 shadow-xl mb-4 relative z-10">
+                <!-- Logo dibiarkan tanpa lazy load karena di atas fold -->
                 <img src="aset/grup.webp" alt="Logo Nitta Group" class="w-full h-full object-cover rounded-full" onerror="this.src='https://placehold.co/400x400/f1f5f9/0f172a?text=NG'">
             </div>
             <h1 class="text-2xl font-bold tracking-wide relative z-10 mb-3">Nitta Group</h1>
@@ -304,6 +305,13 @@
                 { id: 'bross_10', name: 'Gold Red Brooch', price: 70000, img: 'aset/red.webp', desc: 'Bross premium cocok untuk hadiah.' },
                 { id: 'bross_11', name: 'Broken White Brooch', price: 75000, img: 'aset/white.webp', desc: 'Bross premium cocok untuk hadiah.' },
                 { id: 'bross_12', name: 'Xie Xie Brooch', price: 150000, img: 'aset/xie.webp', desc: 'Bross premium cocok untuk hadiah.' },
+                { id: 'bross_13', name: 'Limited Edition Brooch', price: 60000, img: 'aset/bross1.webp', desc: 'Bross Limited Edition.' },
+                { id: 'bross_14', name: 'Limited Edition Brooch', price: 300000, img: 'aset/bross2.webp', desc: 'Bross Limited Edition.' },
+                { id: 'bross_15', name: 'Limited Edition Brooch', price: 150000, img: 'aset/bross3.webp', desc: 'Bross Limited Edition.' },
+                { id: 'bross_16', name: 'Limited Edition Brooch', price: 50000, img: 'aset/bross4.webp', desc: 'Bross Limited Edition.' },
+                { id: 'bross_17', name: 'Limited Edition Brooch', price: 50000, img: 'aset/bross7.webp', desc: 'Bross Limited Edition.' },
+                { id: 'bross_18', name: 'Limited Edition Brooch', price: 100000, img: 'aset/bross8.webp', desc: 'Bross Limited Edition.' },
+                { id: 'bross_19', name: 'Limited Edition Brooch', price: 220000, img: 'aset/bross9.webp', desc: 'Bross Limited Edition.' }
             ],
             lemari: [
                 { id: 'lemari_1', name: 'Tas Pink Cantik', price: 25000, img: 'aset/tas10.webp', desc: 'Tas simple untuk aktivitasmu.' },
@@ -318,16 +326,18 @@
                 { id: 'lemari_10', name: 'Tas Jinjing pesta', price: 85000, img: 'aset/tas4.webp', desc: 'Tas jinjing pesta untuk pancarkan pesonamu.' },
                 { id: 'lemari_11', name: 'Tas Rajut Krem', price: 75000, img: 'aset/tas1.webp', desc: 'Tas rajut krem untuk aktivitasmu.' },
                 { id: 'lemari_12', name: 'Tas Jeans ransel', price: 150000, img: 'aset/tas.webp', desc: 'Tas Jeans Ransel untuk aktivitasmu.' },
-                { id: 'lemari_13', name: 'Sandal Lawrensia', price: 100000, img: 'aset/sandal.webp', desc: 'Preloved, Desain elegan,nyaman dipakai.' }
+                { id: 'lemari_13', name: 'Sandal Lawrensia', price: 100000, img: 'aset/sandal.webp', desc: 'Preloved, Desain elegan,nyaman dipakai.' },
+                { id: 'lemari_14', name: 'Mainan Edukasi Al-Qolam', price: 100000, img: 'aset/edukasi.webp', desc: 'Mainan edukasi belajar Quran untuk anak-anak.' },
+                { id: 'lemari_15', name: 'Kandang hamster', price: 60000, img: 'aset/hamster.webp', desc: 'Kandang hamster dengan Treadmill.' },
+                { id: 'lemari_16', name: 'Baby Walker 2nd', price: 126000, img: 'aset/mainan.webp', desc: 'baby walker masih normal dan siap pakai.' },
+                { id: 'lemari_17', name: 'Stroller 2nd', price: 200000, img: 'aset/stroller.webp', desc: 'Stroller untuk kebutuhan bayi.' }
             ],
             slondok: [
                 { id: 'slo_1', name: 'Krupuk Slondok', price: 253500, img: 'aset/slondok.webp', desc: '1 bal (16 pack @300 gram mentah) R0 253.500.' },
             ],
             nira: [
-                { id: 'nira_1', name: 'Mainan Edukasi Al-Qolam', price: 200000, img: 'aset/edukasi.webp', desc: 'Mainan edukasi belajar Quran untuk anak-anak.' },
-                { id: 'nira_2', name: 'Kandang hamster', price: 60000, img: 'aset/hamster.webp', desc: 'Kandang hamster dengan Treadmill.' },
-                { id: 'nira_3', name: 'Baby Walker 2nd', price: 126000, img: 'aset/mainan.webp', desc: 'baby walker masih normal dan siap pakai.' },
-                { id: 'nira_4', name: 'Stroller 2nd', price: 200000, img: 'aset/stroller.webp', desc: 'Stroller untuk kebutuhan bayi.' },
+                { id: 'nira_1', name: 'Dompet Jeans', price: 120000, img: 'aset/dompet.webp', desc: 'Dompet jeans Handmade by Nittabross.' },
+                { id: 'nira_2', name: 'Tas Tenteng', price: 120000, img: 'aset/tenteng.webp', desc: 'Tas tenteng untuk aktivitasmu.' },
             ],     
             mc: [
                 { id: 'mc_1', name: 'MC Acara Anak-anak', price:250000, img: 'aset/mcanak.webp', desc: 'MC untuk acara anak-anak.' },   
@@ -336,7 +346,7 @@
                 { id: 'mc_4', name: 'MC Resmi/Formal Double', price:2000000, img: 'aset/profesional.webp', desc: 'MC untuk acara resmi/formal double (2 MC).' },                           
             ],
             marketing: [
-                { id: 'mar_1', name: 'Freelance Marketing', price: 0, img: 'aset/status.webp', desc: 'silahkan kontak admin untuk memilih layanan.' },
+                { id: 'mar_1', name: 'Freelance Marketing', price: 5000, img: 'aset/status.webp', desc: 'silahkan kontak admin untuk memilih layanan.' },
             ],
             buku: [
                 { id: 'buku_1', name: 'Mengubah Sampah Menjadi Emas', price: 75000, img: 'aset/buku1.webp', desc: 'Buku mengubah sampai menjadi emas (PO).' },
@@ -368,7 +378,7 @@
 
         // --- RENDER FUNCTIONS ---
 
-        function renderDivisions() {
+       function renderDivisions() {
             const container = document.getElementById('divisionsContainer');
             container.innerHTML = '';
 
@@ -383,7 +393,8 @@
 
                 card.innerHTML = `
                     <div class="w-20 h-20 rounded-full overflow-hidden border-[3px] border-slate-100 mb-3 shadow-sm bg-slate-100 flex items-center justify-center flex-shrink-0">
-                        <img src="${div.img}" alt="${div.name}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x400/f1f5f9/0f172a?text=img'">
+                        <!-- Perbaikan: Tambah onload agar gambar muncul dari transparan -->
+                        <img src="${div.img}" alt="${div.name}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); this.src='https://placehold.co/400x400/f1f5f9/0f172a?text=Error'" class="w-full h-full object-cover">
                     </div>
                     <h3 class="font-bold text-sm text-slate-800 leading-tight">${div.name}</h3>
                 `;
@@ -442,6 +453,22 @@
                     </button>
                 `;
                 container.appendChild(banner);
+            } 
+            // --- CTA KHUSUS NITTA BROSS ---
+            else if (currentDivisionId === 'bross') {
+                const waMessage = encodeURIComponent("Halo Admin Nitta Bross, saya ingin melihat koleksi bross lainnya yang tidak ada di etalase katalog. Boleh minta katalog lengkapnya?");
+                const banner = document.createElement('div');
+                banner.className = 'col-span-2 bg-gradient-to-br from-slate-800 to-black rounded-[20px] p-4 flex items-center justify-between shadow-md border border-slate-700 mb-1';
+                banner.innerHTML = `
+                    <div class="flex-1 pr-3">
+                        <h4 class="font-bold text-white text-sm mb-1">Cari Koleksi Bross Lainnya?</h4>
+                        <p class="text-[10px] text-slate-300 leading-relaxed">Kami memiliki banyak model cantik lainnya. Hubungi admin untuk melihat katalog lengkap.</p>
+                    </div>
+                    <button onclick="window.open('https://wa.me/${waNumber}?text=${waMessage}', '_blank')" class="bg-green-500 hover:bg-green-600 text-white w-12 h-12 rounded-xl flex items-center justify-center shadow-lg shadow-green-500/30 transition-transform active:scale-95 shrink-0">
+                        <i class="fab fa-whatsapp text-2xl"></i>
+                    </button>
+                `;
+                container.appendChild(banner);
             }
             // --------------------------------------
 
@@ -459,9 +486,13 @@
                 }
 
                 card.innerHTML = `
-                    ${badgeHtml}
+                    <!-- PEMBUNGKUS BADGE DENGAN ID SPESIFIK -->
+                    <div id="badge-${prod.id}">
+                        ${badgeHtml}
+                    </div>
                     <div class="relative w-full aspect-[2/3] bg-slate-50 flex items-center justify-center p-2 cursor-pointer group" onclick="openImageZoom('${prod.id}')">
-                        <img src="${prod.img}" alt="${prod.name}" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-105" onload="this.classList.add('loaded')">
+                        <!-- TAMBAHAN: loading="lazy" (Mempercepat loading web) -->
+                        <img src="${prod.img}" alt="${prod.name}" loading="lazy" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-105" onload="this.classList.add('loaded')">
                         <div class="absolute inset-0 bg-black/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                             <div class="bg-white/90 w-10 h-10 rounded-full flex items-center justify-center text-slate-800 shadow-sm backdrop-blur-sm">
                                 <i class="fas fa-search-plus text-sm"></i>
@@ -473,7 +504,8 @@
                         <p class="text-[10px] text-slate-400 mb-2 line-clamp-1">${prod.desc}</p>
                         <div class="font-black text-slate-900 text-sm mb-4">${formatRupiah(prod.price)}</div>
                         
-                        <div class="mt-auto">
+                        <!-- PEMBUNGKUS TOMBOL DENGAN ID SPESIFIK -->
+                        <div id="action-${prod.id}" class="mt-auto">
                             ${qty === 0 ? `
                                 <button onclick="updateCart('${prod.id}', 1)" class="w-full bg-slate-800 hover:bg-black text-white text-xs font-bold py-2.5 rounded-xl transition-colors flex justify-center items-center gap-1 active:scale-95 shadow-sm shadow-slate-800/30">
                                     <i class="fas fa-plus"></i> Tambah
@@ -494,6 +526,41 @@
                 `;
                 container.appendChild(card);
             });
+        }
+
+        // --- FUNGSI UPDATE UI PINTAR ---
+        function updateProductCardUI(productId) {
+            const qty = cart[productId] || 0;
+            
+            // Update bagian badge
+            const badgeContainer = document.getElementById(`badge-${productId}`);
+            if (badgeContainer) {
+                badgeContainer.innerHTML = qty > 0 
+                    ? `<div class="absolute top-2 right-2 bg-slate-800 text-white text-xs font-bold w-7 h-7 rounded-full flex items-center justify-center z-10 shadow-lg border-2 border-white">${qty}</div>`
+                    : '';
+            }
+
+            // Update bagian action (tombol)
+            const actionContainer = document.getElementById(`action-${productId}`);
+            if (actionContainer) {
+                actionContainer.innerHTML = qty === 0 
+                    ? `
+                        <button onclick="updateCart('${productId}', 1)" class="w-full bg-slate-800 hover:bg-black text-white text-xs font-bold py-2.5 rounded-xl transition-colors flex justify-center items-center gap-1 active:scale-95 shadow-sm shadow-slate-800/30">
+                            <i class="fas fa-plus"></i> Tambah
+                        </button>
+                    ` 
+                    : `
+                        <div class="flex items-center justify-between bg-slate-50 rounded-xl p-1 border border-slate-200">
+                            <button onclick="updateCart('${productId}', -1)" class="w-8 h-8 flex items-center justify-center bg-white rounded-lg shadow-sm text-slate-600 active:scale-95">
+                                <i class="fas fa-minus text-xs"></i>
+                            </button>
+                            <span class="font-bold text-sm w-8 text-center text-slate-800">${qty}</span>
+                            <button onclick="updateCart('${productId}', 1)" class="w-8 h-8 flex items-center justify-center bg-slate-800 rounded-lg shadow-sm text-white active:scale-95">
+                                <i class="fas fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    `;
+            }
         }
 
         // --- IMAGE ZOOM (LIGHTBOX) LOGIC ---
@@ -545,7 +612,9 @@
                 cart[productId] = newQty;
             }
 
-            renderProducts(); 
+            // PERBAIKAN: Hanya update elemen UI secara spesifik tanpa render ulang seluruh produk
+            updateProductCardUI(productId); 
+            
             updateCartUI();
             
             if(!document.getElementById('cartModal').classList.contains('hidden')) {
@@ -639,7 +708,8 @@
             items.forEach(({ product, qty }) => {
                 html += `
                     <div class="flex items-center gap-4 bg-white p-3 rounded-[20px] border border-slate-200 shadow-sm">
-                        <img src="${product.img}" alt="${product.name}" class="w-16 h-16 rounded-xl object-cover bg-slate-50 shrink-0" onload="this.classList.add('loaded')" style="opacity: 1;">
+                        <!-- TAMBAHAN: loading="lazy" (Mempercepat loading web) -->
+                        <img src="${product.img}" alt="${product.name}" loading="lazy" class="w-16 h-16 rounded-xl object-cover bg-slate-50 shrink-0" onload="this.classList.add('loaded')" style="opacity: 1;">
                         <div class="flex-1 min-w-0">
                             <h4 class="font-bold text-sm leading-tight text-slate-800 truncate">${product.name}</h4>
                             <div class="text-slate-900 font-black text-sm mt-1">${formatRupiah(product.price)}</div>
