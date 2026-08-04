@@ -241,9 +241,7 @@
             <i class="fas fa-times text-xl"></i>
         </button>
         <div class="relative w-full max-w-2xl px-4 flex flex-col items-center">
-            <!-- Gambar membesar -->
             <img id="zoomedImage" src="" alt="Zoomed" class="w-full max-h-[70vh] object-contain rounded-lg shadow-2xl transition-transform duration-300 transform scale-95" onclick="event.stopPropagation()">
-            <!-- Judul produk di bawah gambar -->
             <h3 id="zoomedImageTitle" class="text-white mt-5 font-bold text-center text-lg tracking-wide"></h3>
         </div>
     </div>
@@ -429,6 +427,24 @@
             const container = document.getElementById('productsContainer');
             container.innerHTML = '';
 
+            // --- CTA KHUSUS APOTEK NITTA MEDIKA ---
+            if (currentDivisionId === 'medika') {
+                const waMessage = encodeURIComponent("Halo Admin Apotek Nitta Medika, saya butuh obat/produk kesehatan yang tidak ada di etalase katalog. Apakah bisa dibantu?");
+                const banner = document.createElement('div');
+                banner.className = 'col-span-2 bg-gradient-to-br from-slate-800 to-black rounded-[20px] p-4 flex items-center justify-between shadow-md border border-slate-700 mb-1';
+                banner.innerHTML = `
+                    <div class="flex-1 pr-3">
+                        <h4 class="font-bold text-white text-sm mb-1">Butuh Obat Lain?</h4>
+                        <p class="text-[10px] text-slate-300 leading-relaxed">Tanyakan langsung ke admin kami untuk produk apotek yang tidak ada di etalase.</p>
+                    </div>
+                    <button onclick="window.open('https://wa.me/${waNumber}?text=${waMessage}', '_blank')" class="bg-green-500 hover:bg-green-600 text-white w-12 h-12 rounded-xl flex items-center justify-center shadow-lg shadow-green-500/30 transition-transform active:scale-95 shrink-0">
+                        <i class="fab fa-whatsapp text-2xl"></i>
+                    </button>
+                `;
+                container.appendChild(banner);
+            }
+            // --------------------------------------
+
             const productsToRender = productsData[currentDivisionId] || [];
 
             productsToRender.forEach(prod => {
@@ -442,12 +458,10 @@
                     badgeHtml = `<div class="absolute top-2 right-2 bg-slate-800 text-white text-xs font-bold w-7 h-7 rounded-full flex items-center justify-center z-10 shadow-lg border-2 border-white">${qty}</div>`;
                 }
 
-                // Bagian wadah gambar ditambahkan onclick zoom dan hover effect
                 card.innerHTML = `
                     ${badgeHtml}
                     <div class="relative w-full aspect-[2/3] bg-slate-50 flex items-center justify-center p-2 cursor-pointer group" onclick="openImageZoom('${prod.id}')">
                         <img src="${prod.img}" alt="${prod.name}" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-105" onload="this.classList.add('loaded')">
-                        <!-- Hover icon pencarian -->
                         <div class="absolute inset-0 bg-black/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                             <div class="bg-white/90 w-10 h-10 rounded-full flex items-center justify-center text-slate-800 shadow-sm backdrop-blur-sm">
                                 <i class="fas fa-search-plus text-sm"></i>
@@ -492,13 +506,11 @@
             const img = document.getElementById('zoomedImage');
             const title = document.getElementById('zoomedImageTitle');
 
-            // Set gambar dan judul
             img.src = product.img;
             title.innerText = product.name;
 
-            // Tampilkan modal dengan animasi
             modal.classList.remove('hidden');
-            void modal.offsetWidth; // Memicu transisi CSS
+            void modal.offsetWidth; 
             modal.classList.remove('opacity-0');
             modal.classList.add('opacity-100');
             
@@ -510,7 +522,6 @@
             const modal = document.getElementById('imageZoomModal');
             const img = document.getElementById('zoomedImage');
 
-            // Sembunyikan modal dengan animasi
             modal.classList.remove('opacity-100');
             modal.classList.add('opacity-0');
             
