@@ -59,14 +59,14 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(236, 72, 153, 0.1); /* Pink border tint */
-            box-shadow: 0 10px 40px -10px rgba(236, 72, 153, 0.15); /* Pink shadow */
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.15);
         }
 
-        /* Modern Subtle Dot Pattern - PINK THEME */
+        /* Modern Subtle Dot Pattern */
         .bg-pattern {
-            background-color: #fdf2f8; /* Soft pink muda */
-            background-image: radial-gradient(rgba(236, 72, 153, 0.15) 1.5px, transparent 1.5px); /* Titik pink */
+            background-color: #f8fafc;
+            background-image: radial-gradient(rgba(15, 23, 42, 0.08) 1.5px, transparent 1.5px);
             background-size: 24px 24px;
         }
 
@@ -84,29 +84,26 @@
 </head>
 <body class="text-slate-800 antialiased overflow-x-hidden bg-pattern relative z-0">
 
-    <!-- Decorative Background Glow/Orbs (Premium Pink Feel) -->
+    <!-- Decorative Background Glow/Orbs -->
     <div class="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
-        <div class="absolute top-[-5%] left-[-10%] w-72 h-72 bg-pink-400/20 rounded-full blur-3xl"></div>
-        <div class="absolute top-[40%] right-[-10%] w-80 h-80 bg-rose-300/20 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-[-5%] left-[20%] w-64 h-64 bg-fuchsia-300/20 rounded-full blur-3xl"></div>
+        <div class="absolute top-[-5%] left-[-10%] w-72 h-72 bg-slate-300/30 rounded-full blur-3xl"></div>
+        <div class="absolute top-[40%] right-[-10%] w-80 h-80 bg-gray-300/30 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-[-5%] left-[20%] w-64 h-64 bg-slate-400/20 rounded-full blur-3xl"></div>
     </div>
 
     <!-- PAGE 1: HOME (DIVISIONS) -->
     <div id="homePage" class="page active min-h-screen">
         
-        <!-- Header (Pink Gradient) -->
-        <header class="bg-gradient-to-br from-pink-300 to-pink-200 text-slate-800 rounded-b-[40px] shadow-lg flex flex-col items-center justify-center pt-12 pb-10 relative overflow-hidden px-4">
-            <!-- Background accent -->
-            <div class="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent"></div>
+        <!-- Header -->
+        <header class="bg-gradient-to-br from-slate-900 to-black text-white rounded-b-[40px] shadow-lg flex flex-col items-center justify-center pt-12 pb-10 relative overflow-hidden px-4">
+            <div class="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent"></div>
             
-            <div class="w-28 h-28 rounded-full border-[4px] border-white bg-white flex items-center justify-center p-1 shadow-xl mb-4 relative z-10">
-                <!-- GANTI URL GAMBAR DI BAWAH INI DENGAN LOGO ASLI -->
-                <img src="aset/grup.jpeg" alt="Logo Nitta Group" class="w-full h-full object-cover rounded-full" onerror="this.src='https://placehold.co/400x400/fbcfe8/334155?text=NG'">
+            <div class="w-28 h-28 rounded-full border-[4px] border-slate-800 bg-white flex items-center justify-center p-1 shadow-xl mb-4 relative z-10">
+                <img src="aset/grup.jpeg" alt="Logo Nitta Group" class="w-full h-full object-cover rounded-full" onerror="this.src='https://placehold.co/400x400/f1f5f9/0f172a?text=NG'">
             </div>
             <h1 class="text-2xl font-bold tracking-wide relative z-10 mb-3">Nitta Group</h1>
             
-            <!-- Deskripsi Baru dari Klien -->
-            <p class="text-xs text-slate-700 relative z-10 font-medium text-center leading-relaxed max-w-sm px-2">
+            <p class="text-xs text-slate-300 relative z-10 font-medium text-center leading-relaxed max-w-sm px-2">
                 Nitta Group merupakan grup usaha yang menaungi berbagai unit bisnis di bidang kesehatan, industri kreatif, makanan dan aneka produk menarik lainnya. Dengan mengutamakan kualitas, inovasi, dan pelayanan terbaik, kami berkomitmen menghadirkan produk yang bermanfaat serta menjadi mitra terpercaya bagi masyarakat dan dunia usaha.
             </p>
         </header>
@@ -114,22 +111,21 @@
         <!-- Divisions List -->
         <main class="container mx-auto px-4 mt-8 flex-1 pb-12">
             <div class="grid grid-cols-2 gap-4" id="divisionsContainer">
-                <!-- Division cards will be injected here via JS -->
+                <!-- Injected via JS -->
             </div>
         </main>
 
-        <!-- Footer & Maps Section (Pink Gradient) -->
-        <footer class="bg-gradient-to-br from-pink-300 to-pink-200 text-slate-800 rounded-t-[40px] shadow-[0_-15px_40px_-15px_rgba(244,114,182,0.3)] pt-12 pb-8 mt-auto px-6 relative z-10">
-            <!-- Decorative notch -->
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-1.5 bg-white/60 rounded-full mt-3"></div>
+        <!-- Footer & Maps Section -->
+        <footer class="bg-gradient-to-br from-slate-900 to-black text-white rounded-t-[40px] shadow-[0_-15px_40px_-15px_rgba(0,0,0,0.4)] pt-12 pb-8 mt-auto px-6 relative z-10">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-1.5 bg-slate-700 rounded-full mt-3"></div>
             
             <div class="text-center mb-8 px-2">
-                <h3 class="text-xl font-bold mb-3 tracking-wide text-slate-800">Nitta Group</h3>
-                <p class="text-sm text-slate-700 leading-relaxed font-medium">Menghadirkan solusi di bidang kesehatan, industri kreatif, makanan, dan produk berkualitas melalui inovasi dan pelayanan terbaik.</p>
+                <h3 class="text-xl font-bold mb-3 tracking-wide text-white">Nitta Group</h3>
+                <p class="text-sm text-slate-400 leading-relaxed font-medium">Menghadirkan solusi di bidang kesehatan, industri kreatif, makanan, dan produk berkualitas melalui inovasi dan pelayanan terbaik.</p>
             </div>
 
             <!-- Maps Card -->
-            <div class="mb-5 rounded-2xl overflow-hidden shadow-sm border border-white/60 bg-white/40 p-1 backdrop-blur-sm">
+            <div class="mb-5 rounded-2xl overflow-hidden shadow-sm border border-slate-700 bg-slate-800/50 p-1 backdrop-blur-sm">
                 <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.578663855512!2d112.2338006!3d-7.5342004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e783fc11f592ad1%3A0x6b107e0c4a4e1b8b!2sJl.%20Laksda%20Adi%20Sucipto%20No.14A%2C%20Sambongdukuh%2C%20Kec.%20Jombang%2C%20Kabupaten%20Jombang%2C%20Jawa%20Timur%2061413!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
                     width="100%" 
@@ -142,13 +138,13 @@
             </div>
 
             <!-- CTA Maps -->
-            <a href="https://maps.google.com/?q=Jl.+Laksda+Adi+Sucipto+No.14A,+Sambongdukuh,+Jombang" target="_blank" class="flex justify-center items-center gap-2 w-full bg-white hover:bg-pink-50 text-pink-600 py-3.5 rounded-xl font-bold mb-8 transition-colors border border-white active:scale-95 shadow-sm">
+            <a href="https://maps.google.com/?q=Jl.+Laksda+Adi+Sucipto+No.14A,+Sambongdukuh,+Jombang" target="_blank" class="flex justify-center items-center gap-2 w-full bg-white hover:bg-slate-200 text-slate-900 py-3.5 rounded-xl font-bold mb-8 transition-colors border border-transparent active:scale-95 shadow-sm">
                 <i class="fas fa-location-arrow"></i> Buka Navigasi Maps
             </a>
 
             <!-- Copyright -->
-            <div class="border-t border-pink-400/20 pt-6 flex flex-col items-center justify-center">
-                <p class="text-xs text-pink-700 font-semibold">&copy; 2024 Nitta Group. All rights reserved.</p>
+            <div class="border-t border-slate-800 pt-6 flex flex-col items-center justify-center">
+                <p class="text-xs text-slate-500 font-semibold">&copy; 2024 Nitta Group. All rights reserved.</p>
             </div>
         </footer>
     </div>
@@ -156,7 +152,7 @@
     <!-- PAGE 2: CATALOG (PRODUCTS) -->
     <div id="catalogPage" class="page min-h-screen pb-28">
         
-        <!-- Header with Back Button (Glassmorphism) -->
+        <!-- Header with Back Button -->
         <header class="glass-header p-4 sticky top-0 z-20 flex items-center justify-between">
             <button onclick="goHome()" class="w-10 h-10 flex items-center justify-center text-slate-700 bg-white rounded-full shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors active:scale-95">
                 <i class="fas fa-arrow-left"></i>
@@ -176,7 +172,7 @@
             <button onclick="openCart()" class="glass-button pointer-events-auto w-full max-w-md py-3.5 px-5 rounded-2xl flex justify-between items-center text-slate-800 font-semibold transform transition active:scale-95">
                 <div class="flex items-center gap-3">
                     <div class="relative">
-                        <div class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-pink-600">
+                        <div class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-800">
                             <i class="fas fa-shopping-basket text-lg"></i>
                         </div>
                         <span id="cartBadge" class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full shadow-md hidden border-2 border-white">0</span>
@@ -186,17 +182,16 @@
                         <span id="cartTotalPreview" class="text-slate-800 font-black text-sm">Rp 0</span>
                     </div>
                 </div>
-                <div class="bg-rose-500 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shadow-sm shadow-rose-500/30">
+                <div class="bg-slate-800 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shadow-sm shadow-slate-800/30">
                     Checkout <i class="fas fa-chevron-right text-[10px]"></i>
                 </div>
             </button>
         </div>
     </div>
 
-    <!-- Floating WhatsApp Button (Global) -->
+    <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/6281233250989?text=Halo%20Admin%20Nitta%20Group,%20saya%20ingin%20bertanya%20sesuatu..." target="_blank" class="fixed bottom-28 right-5 z-40 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-[0_4px_20px_rgba(34,197,94,0.4)] hover:bg-green-600 transition-transform active:scale-90 border-2 border-white">
         <i class="fab fa-whatsapp text-3xl"></i>
-        <!-- Ping Animation -->
         <span class="absolute top-0 right-0 w-3 h-3 bg-red-500 border-2 border-white rounded-full animate-ping"></span>
         <span class="absolute top-0 right-0 w-3 h-3 bg-red-500 border-2 border-white rounded-full"></span>
     </a>
@@ -216,10 +211,10 @@
             <!-- Cart Items -->
             <div class="flex-1 overflow-y-auto p-5 relative overscroll-contain bg-slate-50/50">
                 <div id="cartItemsList" class="flex flex-col gap-3">
-                    <!-- Cart items injected here -->
+                    <!-- Injected here -->
                 </div>
                 <div id="emptyCartMessage" class="absolute inset-0 flex flex-col items-center justify-center text-slate-400 bg-transparent z-10 hidden">
-                    <div class="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mb-4 text-slate-300">
+                    <div class="w-20 h-20 bg-slate-200 rounded-full flex items-center justify-center mb-4 text-slate-400">
                         <i class="fas fa-box-open text-3xl"></i>
                     </div>
                     <p class="font-medium text-slate-500">Keranjang masih kosong.</p>
@@ -240,10 +235,21 @@
         </div>
     </div>
 
+    <!-- MODAL: IMAGE ZOOM (LIGHTBOX) -->
+    <div id="imageZoomModal" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-[100] hidden flex-col justify-center items-center transition-opacity opacity-0 cursor-pointer" onclick="closeImageZoom()">
+        <button class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center text-white bg-white/20 rounded-full hover:bg-white/40 transition-colors z-[110]">
+            <i class="fas fa-times text-xl"></i>
+        </button>
+        <div class="relative w-full max-w-2xl px-4 flex flex-col items-center">
+            <!-- Gambar membesar -->
+            <img id="zoomedImage" src="" alt="Zoomed" class="w-full max-h-[70vh] object-contain rounded-lg shadow-2xl transition-transform duration-300 transform scale-95" onclick="event.stopPropagation()">
+            <!-- Judul produk di bawah gambar -->
+            <h3 id="zoomedImageTitle" class="text-white mt-5 font-bold text-center text-lg tracking-wide"></h3>
+        </div>
+    </div>
+
     <script>
         // --- DATA ---
-        
-        // Nomor WhatsApp Admin
         const waNumber = "6281233250989"; 
 
         const divisions = [
@@ -261,18 +267,18 @@
         const productsData = {
            medika: [
                 { id: 'med_1', name: 'Nutri-Well', price: 317000, img: 'aset/nutri.jpeg', desc: 'Vitamin penjaga kesehatan tulang dan imunitas.' },
-                { id: 'med_2', name: 'Now Vitamin D-3', price: 77000, img: 'aset/nou.jpeg', desc: 'Suplemen vitamin D-3 untuk kesehatan tulang.' },
-                { id: 'med_3', name: 'Magnesium Glycinate', price: 120000, img: 'aset/magnesium2.jpeg', desc: 'Suplemen magnesium untuk kesehatan otot dan saraf.' },
+                { id: 'med_2', name: 'Now Vitamin D-3', price: 56000, img: 'aset/nou.jpeg', desc: 'Suplemen vitamin D-3 untuk kesehatan tulang.' },
+                { id: 'med_3', name: 'Magnesium Glycinate', price: 76000, img: 'aset/magnesium2.jpeg', desc: 'Suplemen magnesium untuk kesehatan otot dan saraf.' },
                 { id: 'med_4', name: 'Nutri-well Magnesium 30 Kapsul', price: 65000, img: 'aset/magnesium.jpeg', desc: 'Menghangatkan badan dan meredakan perut kembung.' },
-                { id: 'med_5', name: 'Imboost With Vit C', price: 15000, img: 'aset/imboost2.jpeg', desc: 'Bantu Jaga Daya tahan tubuh.' },
-                { id: 'med_6', name: 'Imboost With Vit C & D3', price: 35000, img: 'aset/imboost.jpeg', desc: 'Bantu Jaga Daya tahan tubuh dan kesehatan tulang.' },
-                { id: 'med_7', name: 'Sidomuncul Vit D3', price: 25000, img: 'aset/D3.jpeg', desc: 'MDukungan untuk tulang kuat dan imun maksimal.' },
-                { id: 'med_8', name: 'Folamil Gold', price: 40000, img: 'aset/folamil.jpeg', desc: 'Nutrisi untuk ibu hamil.' },
-                { id: 'med_9', name: 'Collagen Bone Complete', price: 60000, img: 'aset/collagen.jpeg', desc: 'Meningkatkan kepadatan dan kesehatan tulang.' },
-                { id: 'med_10', name: 'Cerebrofort', price: 15000, img: 'aset/cerebrofort.jpeg', desc: 'Mendukung perkembangan otak dan fungsi kognitif.' },
+                { id: 'med_5', name: 'Imboost With Vit C', price: 43000, img: 'aset/imboost2.jpeg', desc: 'Bantu Jaga Daya tahan tubuh.' },
+                { id: 'med_6', name: 'Imboost With Vit C & D3', price: 45000, img: 'aset/imboost.jpeg', desc: 'Bantu Jaga Daya tahan tubuh dan kesehatan tulang.' },
+                { id: 'med_7', name: 'Sidomuncul Vit D3', price: 96000, img: 'aset/D3.jpeg', desc: 'MDukungan untuk tulang kuat dan imun maksimal.' },
+                { id: 'med_8', name: 'Folamil Gold', price: 184000, img: 'aset/folamil.jpeg', desc: 'Nutrisi untuk ibu hamil.' },
+                { id: 'med_9', name: 'Collagen Bone Complete', price: 54000, img: 'aset/collagen.jpeg', desc: 'Meningkatkan kepadatan dan kesehatan tulang.' },
+                { id: 'med_10', name: 'Cerebrofort', price: 26000, img: 'aset/cerebrofort.jpeg', desc: 'Mendukung perkembangan otak dan fungsi kognitif.' },
                 { id: 'med_11', name: 'Carrol SP', price: 15000, img: 'aset/carroll.jpeg', desc: 'Meredakan nyeri pinggang dan pegal linu.' },
                 { id: 'med_12', name: 'Now Calcium & Magnesium', price: 15000, img: 'aset/calcium.jpeg', desc: 'Mendukung perkembangan otak dan fungsi kognitif.' },
-                { id: 'med_13', name: 'Beras Merah', price: 15000, img: 'aset/beras.jpeg', desc: 'Membantu menjaga berat badan & sumber serat tinggi.' },
+                { id: 'med_13', name: 'Beras Merah', price: 22000, img: 'aset/beras.jpeg', desc: 'Membantu menjaga berat badan & sumber serat tinggi.' },
                 { id: 'med_14', name: 'Avita Glow', price: 15000, img: 'aset/avita.jpeg', desc: 'Membantu menjaga kekuatan dan kepadatan tulang & gigi.' },
                 { id: 'med_15', name: 'Sewa Alat Kesehatan', price: 15000, img: 'aset/sewa.jpeg', desc: 'Sewa alat kesehatan untuk kebutuhan medis.' }
             ],
@@ -280,14 +286,14 @@
                 { id: 'sup_1', name: 'Bawang Hitam 200 gr', price: 75000, img: 'aset/bawang1.jpeg', desc: 'Meningkatkan sistem imun & Kesehatan jantung.' },
                 { id: 'sup_2', name: 'Bawang Hitam 95 gr', price: 35000, img: 'aset/bawang2.jpeg', desc: 'Meningkatkan sistem imun & Kesehatan jantung.' },
                 { id: 'sup_3', name: 'Madu Bawang Hitam 300 gr', price: 80000, img: 'aset/bawang3.jpeg', desc: 'Meningkatkan sistem imun & Kesehatan jantung.' },
-                { id: 'sup_4', name: 'Madu Bawang Hitam 125 gr', price: 65000, img: 'aset/bawang4.jpeg', desc: 'Meningkatkan sistem imun & Kesehatan jantung.' },
+                { id: 'sup_4', name: 'Madu Bawang Hitam 125 gr', price: 40000, img: 'aset/bawang4.jpeg', desc: 'Meningkatkan sistem imun & Kesehatan jantung.' },
                 { id: 'sup_5', name: 'Bawang Hitam Kulit Basah 200 gr', price: 40000, img: 'aset/bawang5.jpeg', desc: 'Meningkatkan sistem imun & Kesehatan jantung.' },
                 { id: 'sup_6', name: 'Bawang Hitam Kulit Basah 95 gr', price: 20000, img: 'aset/bawang6.jpeg', desc: 'Meningkatkan sistem imun & Kesehatan jantung.' },
                 { id: 'sup_7', name: 'Promo Harga Garlixa Kulit Basah', price: 18000, img: 'aset/bawang7.jpeg', desc: 'Meningkatkan sistem imun & Kesehatan jantung.' },
                 { id: 'sup_8', name: 'Promo Spesial Garlixa Kulir Kering', price: 30000, img: 'aset/bawang8.jpeg', desc: 'Meningkatkan sistem imun & Kesehatan jantung.' },
-                { id: 'sup_9', name: 'Konsiyasi Produk Super Food', price: 18000, img: 'aset/collagen.jpeg', desc: 'Meningkatkan sistem imun & Kesehatan jantung.' }
+                { id: 'sup_9', name: 'Konsiyasi Produk Super Food', price: 18000, img: 'aset/bawang9.jpeg', desc: 'Meningkatkan sistem imun & Kesehatan jantung.' }
             ],
-               bross: [
+            bross: [
                 { id: 'bross_1', name: 'Purple Brooch', price: 50000, img: 'aset/brooch.jpeg', desc: 'Bross premium cocok untuk hadiah.' },
                 { id: 'bross_2', name: 'Gold Brooch', price: 95000, img: 'aset/gold.jpeg', desc: 'Bross premium cocok untuk hadiah.' },
                 { id: 'bross_3', name: 'Kupu Premium Brooch', price: 35000, img: 'aset/kupu.jpeg', desc: 'Bross premium cocok untuk hadiah.' },
@@ -301,7 +307,7 @@
                 { id: 'bross_11', name: 'Broken White Brooch', price: 75000, img: 'aset/white.jpeg', desc: 'Bross premium cocok untuk hadiah.' },
                 { id: 'bross_12', name: 'Xie Xie Brooch', price: 150000, img: 'aset/xie.jpeg', desc: 'Bross premium cocok untuk hadiah.' },
             ],
-                lemari: [
+            lemari: [
                 { id: 'lemari_1', name: 'Tas Pink Cantik', price: 25000, img: 'aset/tas10.jpeg', desc: 'Tas simple untuk aktivitasmu.' },
                 { id: 'lemari_2', name: 'Tas kanvas Rajut', price: 40000, img: 'aset/tas11.jpeg', desc: 'Tas kanvas rajut untuk aktivitasmu.' },
                 { id: 'lemari_3', name: 'Tas Cantik', price: 25000, img: 'aset/tas8.jpeg', desc: 'Tas simple untuk aktivitasmu.' },
@@ -313,29 +319,35 @@
                 { id: 'lemari_9', name: 'Tas Kanvas Cantik', price: 25000, img: 'aset/tas2.jpeg', desc: 'Tas kanvas cantik untuk aktivitasmu.' },
                 { id: 'lemari_10', name: 'Tas Jinjing pesta', price: 85000, img: 'aset/tas4.jpeg', desc: 'Tas jinjing pesta untuk pancarkan pesonamu.' },
                 { id: 'lemari_11', name: 'Tas Rajut Krem', price: 75000, img: 'aset/tas1.jpeg', desc: 'Tas rajut krem untuk aktivitasmu.' },
-                { id: 'lemari_12', name: 'Tas Jeans ransel', price: 150000, img: 'aset/tas.jpeg', desc: 'Tas Jeans Ransel untuk aktivitasmu.' }
-                
+                { id: 'lemari_12', name: 'Tas Jeans ransel', price: 150000, img: 'aset/tas.jpeg', desc: 'Tas Jeans Ransel untuk aktivitasmu.' },
+                { id: 'lemari_13', name: 'Sandal Lawrensia', price: 100000, img: 'aset/sandal.jpeg', desc: 'Preloved, Desain elegan,nyaman dipakai.' }
             ],
-           slondok: [
+            slondok: [
                 { id: 'slo_1', name: 'Krupuk Slondok', price: 253500, img: 'aset/slondok.jpeg', desc: '1 bal (16 pack @300 gram mentah) R0 253.500.' },
-              
             ],
             nira: [
                 { id: 'nira_1', name: 'Mainan Edukasi Al-Qolam', price: 200000, img: 'aset/edukasi.jpeg', desc: 'Mainan edukasi belajar Quran untuk anak-anak.' },
                 { id: 'nira_2', name: 'Kandang hamster', price: 60000, img: 'aset/hamster.jpeg', desc: 'Kandang hamster dengan Treadmill.' },
                 { id: 'nira_3', name: 'Baby Walker 2nd', price: 126000, img: 'aset/mainan.jpeg', desc: 'baby walker masih normal dan siap pakai.' },
                 { id: 'nira_4', name: 'Stroller 2nd', price: 200000, img: 'aset/stroller.jpeg', desc: 'Stroller untuk kebutuhan bayi.' },
-                
             ],     
             mc: [
-                { id: 'mc_1', name: 'Freelance MC', price:200000, img: 'aset/mc.jpeg', desc: 'MC Profesional untuk pernikahan dan event.' },                         
+                { id: 'mc_1', name: 'MC Acara Anak-anak', price:250000, img: 'aset/mcanak.jpeg', desc: 'MC untuk acara anak-anak.' },   
+                { id: 'mc_2', name: 'MC Semi Formal/Santai', price:500000, img: 'aset/mcformal.jpeg', desc: 'MC untuk acara semi formal/santai.' },    
+                { id: 'mc_3', name: 'MC Acara Resepsi/Resmi', price:1500000, img: 'aset/mcacara.jpeg', desc: 'MC untuk acara Resmi/resepsi,.' },    
+                { id: 'mc_4', name: 'MC Resmi/Formal Double', price:2000000, img: 'aset/profesional.jpeg', desc: 'MC untuk acara resmi/formal double (2 MC).' },                           
             ],
             marketing: [
-                { id: 'mar_1', name: 'Freelance Marketing', price: 200000, img: 'aset/mc.jpeg', desc: 'Marketing Profesional untuk pernikahan dan event.' },
+                { id: 'mar_1', name: 'Freelance Marketing', price: 0, img: 'aset/status.jpeg', desc: 'silahkan kontak admin untuk memilih layanan.' },
             ],
-           
-            
-            buku: Array.from({length: 10}, (_, i) => ({ id: `buk_${i+1}`, name: `Buku Inspirasi Nitta ${i+1}`, price: 85000 + (i*5000), img: `https://picsum.photos/seed/buk_${i+1}/400/400`, desc: 'Kumpulan cerita inspiratif & motivasi.' }))
+            buku: [
+                { id: 'buku_1', name: 'Mengubah Sampah Menjadi Emas', price: 75000, img: 'aset/buku1.jpeg', desc: 'Buku mengubah sampai menjadi emas (PO).' },
+                { id: 'buku_2', name: 'Resonansi', price: 45000, img: 'aset/buku2.jpeg', desc: 'Buku resonansi.' },
+                { id: 'buku_3', name: 'Look Deeper', price: 45000, img: 'aset/buku3.jpeg', desc: 'Buku Look Deeper.' },
+                { id: 'buku_4', name: 'Start Your Business With Less Money', price: 75000, img: 'aset/buku4.jpeg', desc: 'Buku Start Your Business.' },
+                { id: 'buku_5', name: 'Aku dan 27.000 ku', price: 45000, img: 'aset/buku7.jpeg', desc: 'Buku Aku dan 27.000 ku.' },
+                { id: 'buku_6', name: 'Produktif Ala Pawonpreneur', price: 75000, img: 'aset/buku8.jpeg', desc: 'Buku Produktif Ala Pawonpreneur.' },
+            ]
         };
 
         // State Aplikasi
@@ -365,16 +377,15 @@
             divisions.forEach((div, index) => {
                 const card = document.createElement('div');
                 
-                // Trik: Jika ini adalah item ganjil terakhir (Item ke-9), buat posisinya ke tengah (center)
                 const isLastOddItem = (index === divisions.length - 1) && (divisions.length % 2 !== 0);
                 const layoutClass = isLastOddItem ? "col-span-2 justify-self-center w-[calc(50%-0.5rem)] min-w-[150px]" : "";
 
-                card.className = `bg-white rounded-[24px] shadow-sm border border-pink-100 p-4 flex flex-col items-center justify-center text-center cursor-pointer transition-transform transform active:scale-95 swing-on-scroll ${layoutClass}`;
+                card.className = `bg-white rounded-[24px] shadow-sm border border-slate-200 p-4 flex flex-col items-center justify-center text-center cursor-pointer transition-transform transform active:scale-95 swing-on-scroll ${layoutClass}`;
                 card.style.animationDelay = `${index * 0.1}s`;
 
                 card.innerHTML = `
-                    <div class="w-20 h-20 rounded-full overflow-hidden border-[3px] border-pink-50 mb-3 shadow-sm bg-pink-50/50 flex items-center justify-center flex-shrink-0">
-                        <img src="${div.img}" alt="${div.name}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x400/fdf2f8/db2777?text=img'">
+                    <div class="w-20 h-20 rounded-full overflow-hidden border-[3px] border-slate-100 mb-3 shadow-sm bg-slate-100 flex items-center justify-center flex-shrink-0">
+                        <img src="${div.img}" alt="${div.name}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x400/f1f5f9/0f172a?text=img'">
                     </div>
                     <h3 class="font-bold text-sm text-slate-800 leading-tight">${div.name}</h3>
                 `;
@@ -424,27 +435,33 @@
                 const qty = cart[prod.id] || 0;
                 
                 const card = document.createElement('div');
-                card.className = 'bg-white rounded-[20px] shadow-sm overflow-hidden flex flex-col border border-slate-100 relative';
+                card.className = 'bg-white rounded-[20px] shadow-sm overflow-hidden flex flex-col border border-slate-200 relative';
                 
                 let badgeHtml = '';
                 if (qty > 0) {
-                    badgeHtml = `<div class="absolute top-2 right-2 bg-pink-500 text-white text-xs font-bold w-7 h-7 rounded-full flex items-center justify-center z-10 shadow-lg border-2 border-white">${qty}</div>`;
+                    badgeHtml = `<div class="absolute top-2 right-2 bg-slate-800 text-white text-xs font-bold w-7 h-7 rounded-full flex items-center justify-center z-10 shadow-lg border-2 border-white">${qty}</div>`;
                 }
 
+                // Bagian wadah gambar ditambahkan onclick zoom dan hover effect
                 card.innerHTML = `
                     ${badgeHtml}
-                   <div class="relative w-full aspect-[2/3] bg-slate-50 flex items-center justify-center p-2">
-        <img src="${prod.img}" alt="${prod.name}" class="w-full h-full object-contain drop-shadow-sm" onload="this.classList.add('loaded')">
-    </div>
+                    <div class="relative w-full aspect-[2/3] bg-slate-50 flex items-center justify-center p-2 cursor-pointer group" onclick="openImageZoom('${prod.id}')">
+                        <img src="${prod.img}" alt="${prod.name}" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-105" onload="this.classList.add('loaded')">
+                        <!-- Hover icon pencarian -->
+                        <div class="absolute inset-0 bg-black/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <div class="bg-white/90 w-10 h-10 rounded-full flex items-center justify-center text-slate-800 shadow-sm backdrop-blur-sm">
+                                <i class="fas fa-search-plus text-sm"></i>
+                            </div>
+                        </div>
                     </div>
                     <div class="p-3.5 flex-1 flex flex-col">
                         <h3 class="font-bold text-sm text-slate-800 leading-tight mb-1 line-clamp-2">${prod.name}</h3>
                         <p class="text-[10px] text-slate-400 mb-2 line-clamp-1">${prod.desc}</p>
-                        <div class="font-black text-pink-600 text-sm mb-4">${formatRupiah(prod.price)}</div>
+                        <div class="font-black text-slate-900 text-sm mb-4">${formatRupiah(prod.price)}</div>
                         
                         <div class="mt-auto">
                             ${qty === 0 ? `
-                                <button onclick="updateCart('${prod.id}', 1)" class="w-full bg-rose-500 hover:bg-rose-600 text-white text-xs font-bold py-2.5 rounded-xl transition-colors flex justify-center items-center gap-1 active:scale-95 shadow-sm shadow-rose-500/30">
+                                <button onclick="updateCart('${prod.id}', 1)" class="w-full bg-slate-800 hover:bg-black text-white text-xs font-bold py-2.5 rounded-xl transition-colors flex justify-center items-center gap-1 active:scale-95 shadow-sm shadow-slate-800/30">
                                     <i class="fas fa-plus"></i> Tambah
                                 </button>
                             ` : `
@@ -453,7 +470,7 @@
                                         <i class="fas fa-minus text-xs"></i>
                                     </button>
                                     <span class="font-bold text-sm w-8 text-center text-slate-800">${qty}</span>
-                                    <button onclick="updateCart('${prod.id}', 1)" class="w-8 h-8 flex items-center justify-center bg-pink-500 rounded-lg shadow-sm text-white active:scale-95">
+                                    <button onclick="updateCart('${prod.id}', 1)" class="w-8 h-8 flex items-center justify-center bg-slate-800 rounded-lg shadow-sm text-white active:scale-95">
                                         <i class="fas fa-plus text-xs"></i>
                                     </button>
                                 </div>
@@ -463,6 +480,46 @@
                 `;
                 container.appendChild(card);
             });
+        }
+
+        // --- IMAGE ZOOM (LIGHTBOX) LOGIC ---
+        
+        function openImageZoom(productId) {
+            const product = getProductById(productId);
+            if (!product) return;
+
+            const modal = document.getElementById('imageZoomModal');
+            const img = document.getElementById('zoomedImage');
+            const title = document.getElementById('zoomedImageTitle');
+
+            // Set gambar dan judul
+            img.src = product.img;
+            title.innerText = product.name;
+
+            // Tampilkan modal dengan animasi
+            modal.classList.remove('hidden');
+            void modal.offsetWidth; // Memicu transisi CSS
+            modal.classList.remove('opacity-0');
+            modal.classList.add('opacity-100');
+            
+            img.classList.remove('scale-95');
+            img.classList.add('scale-100');
+        }
+
+        function closeImageZoom() {
+            const modal = document.getElementById('imageZoomModal');
+            const img = document.getElementById('zoomedImage');
+
+            // Sembunyikan modal dengan animasi
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0');
+            
+            img.classList.remove('scale-100');
+            img.classList.add('scale-95');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
         }
 
         // --- CART LOGIC ---
@@ -480,7 +537,6 @@
             renderProducts(); 
             updateCartUI();
             
-            // Re-render modal if it is currently open
             if(!document.getElementById('cartModal').classList.contains('hidden')) {
                 renderCartModal();
             }
@@ -525,7 +581,6 @@
             const content = document.getElementById('cartContent');
             
             modal.classList.remove('hidden');
-            // Allow browser to render display:block before transitioning opacity
             void modal.offsetWidth; 
             
             modal.classList.add('opacity-100');
@@ -549,7 +604,7 @@
 
             setTimeout(() => {
                 modal.classList.add('hidden');
-            }, 300); // Matches transition duration
+            }, 300); 
         }
 
         function renderCartModal() {
@@ -572,18 +627,18 @@
 
             items.forEach(({ product, qty }) => {
                 html += `
-                    <div class="flex items-center gap-4 bg-white p-3 rounded-[20px] border border-slate-100 shadow-sm">
+                    <div class="flex items-center gap-4 bg-white p-3 rounded-[20px] border border-slate-200 shadow-sm">
                         <img src="${product.img}" alt="${product.name}" class="w-16 h-16 rounded-xl object-cover bg-slate-50 shrink-0" onload="this.classList.add('loaded')" style="opacity: 1;">
                         <div class="flex-1 min-w-0">
                             <h4 class="font-bold text-sm leading-tight text-slate-800 truncate">${product.name}</h4>
-                            <div class="text-pink-600 font-black text-sm mt-1">${formatRupiah(product.price)}</div>
+                            <div class="text-slate-900 font-black text-sm mt-1">${formatRupiah(product.price)}</div>
                         </div>
                         <div class="flex items-center bg-slate-50 rounded-xl p-1 border border-slate-200 shrink-0 shadow-sm">
                             <button onclick="updateCart('${product.id}', -1)" class="w-7 h-7 flex items-center justify-center text-slate-500 hover:text-black bg-white rounded-lg shadow-sm active:scale-95 transition-all">
                                 <i class="fas fa-minus text-[10px]"></i>
                             </button>
                             <span class="font-bold text-sm w-7 text-center text-slate-800">${qty}</span>
-                            <button onclick="updateCart('${product.id}', 1)" class="w-7 h-7 flex items-center justify-center text-white bg-pink-500 rounded-lg shadow-sm active:scale-95 transition-all">
+                            <button onclick="updateCart('${product.id}', 1)" class="w-7 h-7 flex items-center justify-center text-white bg-slate-800 rounded-lg shadow-sm active:scale-95 transition-all">
                                 <i class="fas fa-plus text-[10px]"></i>
                             </button>
                         </div>
