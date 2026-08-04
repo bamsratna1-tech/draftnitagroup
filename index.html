@@ -111,7 +111,7 @@
 
         <!-- Divisions List -->
         <main class="container mx-auto px-4 mt-8 flex-1 pb-12">
-            <div class="grid grid-cols-2 gap-4" id="divisionsContainer">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4" id="divisionsContainer">
                 <!-- Injected via JS -->
             </div>
         </main>
@@ -163,7 +163,7 @@
 
         <!-- Product List -->
         <main class="container mx-auto px-4 py-6 flex-1">
-            <div id="productsContainer" class="grid grid-cols-2 gap-4">
+            <div id="productsContainer" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
                 <!-- Products will be injected here via JS -->
             </div>
         </main>
@@ -385,8 +385,8 @@
             divisions.forEach((div, index) => {
                 const card = document.createElement('div');
                 
-                const isLastOddItem = (index === divisions.length - 1) && (divisions.length % 2 !== 0);
-                const layoutClass = isLastOddItem ? "col-span-2 justify-self-center w-[calc(50%-0.5rem)] min-w-[150px]" : "";
+                // Logika item ganjil ke tengah dimatikan agar rapi di layar laptop & HP
+                const layoutClass = "";
 
                 card.className = `bg-white rounded-[24px] shadow-sm border border-slate-200 p-4 flex flex-col items-center justify-center text-center cursor-pointer transition-transform transform active:scale-95 swing-on-scroll ${layoutClass}`;
                 card.style.animationDelay = `${index * 0.1}s`;
