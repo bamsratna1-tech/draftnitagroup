@@ -95,7 +95,7 @@
     <div id="homePage" class="page active min-h-screen">
         
         <!-- Header (Pink Gradient) -->
-        <header class="bg-gradient-to-br from-pink-300 to-pink-200 text-slate-800 rounded-b-[40px] shadow-lg flex flex-col items-center justify-center pt-12 pb-10 relative overflow-hidden">
+        <header class="bg-gradient-to-br from-pink-300 to-pink-200 text-slate-800 rounded-b-[40px] shadow-lg flex flex-col items-center justify-center pt-12 pb-10 relative overflow-hidden px-4">
             <!-- Background accent -->
             <div class="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent"></div>
             
@@ -103,8 +103,12 @@
                 <!-- GANTI URL GAMBAR DI BAWAH INI DENGAN LOGO ASLI -->
                 <img src="aset/grup.jpeg" alt="Logo Nitta Group" class="w-full h-full object-cover rounded-full" onerror="this.src='https://placehold.co/400x400/fbcfe8/334155?text=NG'">
             </div>
-            <h1 class="text-2xl font-bold tracking-wide relative z-10">Nitta Group</h1>
-            <p class="text-sm text-pink-700 mt-1 relative z-10 font-medium">Pusat Belanja & Layanan Terpercaya</p>
+            <h1 class="text-2xl font-bold tracking-wide relative z-10 mb-3">Nitta Group</h1>
+            
+            <!-- Deskripsi Baru dari Klien -->
+            <p class="text-xs text-slate-700 relative z-10 font-medium text-center leading-relaxed max-w-sm px-2">
+                Nitta Group merupakan grup usaha yang menaungi berbagai unit bisnis di bidang kesehatan, industri kreatif, makanan dan aneka produk menarik lainnya. Dengan mengutamakan kualitas, inovasi, dan pelayanan terbaik, kami berkomitmen menghadirkan produk yang bermanfaat serta menjadi mitra terpercaya bagi masyarakat dan dunia usaha.
+            </p>
         </header>
 
         <!-- Divisions List -->
@@ -121,7 +125,7 @@
             
             <div class="text-center mb-8 px-2">
                 <h3 class="text-xl font-bold mb-3 tracking-wide text-slate-800">Nitta Group</h3>
-                <p class="text-sm text-slate-700 leading-relaxed font-medium">Berkomitmen menghadirkan layanan dan produk berkualitas terbaik, mulai dari kebutuhan kesehatan hingga camilan nikmat untuk Anda dan keluarga tercinta.</p>
+                <p class="text-sm text-slate-700 leading-relaxed font-medium">Menghadirkan solusi di bidang kesehatan, industri kreatif, makanan, dan produk berkualitas melalui inovasi dan pelayanan terbaik.</p>
             </div>
 
             <!-- Maps Card -->
@@ -255,14 +259,82 @@
         ];
 
         const productsData = {
-            medika: Array.from({length: 20}, (_, i) => ({ id: `med_${i+1}`, name: `Produk Apotek ${i+1}`, price: 10000 + (i*1500), img: `https://picsum.photos/seed/med_${i+1}/400/400`, desc: 'Produk kesehatan & obat-obatan.' })),
-            superfood: Array.from({length: 10}, (_, i) => ({ id: `sup_${i+1}`, name: `Superfood ${i+1}`, price: 25000 + (i*2000), img: `https://picsum.photos/seed/sup_${i+1}/400/400`, desc: 'Makanan organik sehat berkualitas.' })),
-            bross: Array.from({length: 20}, (_, i) => ({ id: `bro_${i+1}`, name: `Bross Premium ${i+1}`, price: 15000 + (i*1000), img: `https://picsum.photos/seed/bro_${i+1}/400/400`, desc: 'Aksesoris bross cantik & elegan.' })),
-            lemari: Array.from({length: 10}, (_, i) => ({ id: `lem_${i+1}`, name: `Pakaian Thrift ${i+1}`, price: 50000 + (i*5000), img: `https://picsum.photos/seed/lem_${i+1}/400/400`, desc: 'Pakaian preloved kondisi sangat baik.' })),
-            slondok: Array.from({length: 4}, (_, i) => ({ id: `slo_${i+1}`, name: `Krupuk Slondok ${i+1}`, price: 12000 + (i*1000), img: `https://picsum.photos/seed/slo_${i+1}/400/400`, desc: 'Krupuk tradisional renyah gurih.' })),
-            nira: Array.from({length: 10}, (_, i) => ({ id: `nir_${i+1}`, name: `Kue & Camilan ${i+1}`, price: 20000 + (i*3000), img: `https://picsum.photos/seed/nir_${i+1}/400/400`, desc: 'Kue manis, lembut, dan lezat.' })),
-            mc: Array.from({length: 5}, (_, i) => ({ id: `mc_${i+1}`, name: `Jasa MC Acara ${i+1}`, price: 500000 + (i*100000), img: `https://picsum.photos/seed/mc_${i+1}/400/400`, desc: 'MC Profesional untuk pernikahan dan event.' })),
-            marketing: Array.from({length: 5}, (_, i) => ({ id: `mar_${i+1}`, name: `Jasa Marketing ${i+1}`, price: 350000 + (i*50000), img: `https://picsum.photos/seed/mar_${i+1}/400/400`, desc: 'Bantu tingkatkan penjualan bisnismu.' })),
+           medika: [
+                { id: 'med_1', name: 'Nutri-Well', price: 317000, img: 'aset/nutri.jpeg', desc: 'Vitamin penjaga kesehatan tulang dan imunitas.' },
+                { id: 'med_2', name: 'Now Vitamin D-3', price: 77000, img: 'aset/nou.jpeg', desc: 'Suplemen vitamin D-3 untuk kesehatan tulang.' },
+                { id: 'med_3', name: 'Magnesium Glycinate', price: 120000, img: 'aset/magnesium2.jpeg', desc: 'Suplemen magnesium untuk kesehatan otot dan saraf.' },
+                { id: 'med_4', name: 'Nutri-well Magnesium 30 Kapsul', price: 65000, img: 'aset/magnesium.jpeg', desc: 'Menghangatkan badan dan meredakan perut kembung.' },
+                { id: 'med_5', name: 'Imboost With Vit C', price: 15000, img: 'aset/imboost2.jpeg', desc: 'Bantu Jaga Daya tahan tubuh.' },
+                { id: 'med_6', name: 'Imboost With Vit C & D3', price: 35000, img: 'aset/imboost.jpeg', desc: 'Bantu Jaga Daya tahan tubuh dan kesehatan tulang.' },
+                { id: 'med_7', name: 'Sidomuncul Vit D3', price: 25000, img: 'aset/D3.jpeg', desc: 'MDukungan untuk tulang kuat dan imun maksimal.' },
+                { id: 'med_8', name: 'Folamil Gold', price: 40000, img: 'aset/folamil.jpeg', desc: 'Nutrisi untuk ibu hamil.' },
+                { id: 'med_9', name: 'Collagen Bone Complete', price: 60000, img: 'aset/collagen.jpeg', desc: 'Meningkatkan kepadatan dan kesehatan tulang.' },
+                { id: 'med_10', name: 'Cerebrofort', price: 15000, img: 'aset/cerebrofort.jpeg', desc: 'Mendukung perkembangan otak dan fungsi kognitif.' },
+                { id: 'med_11', name: 'Carrol SP', price: 15000, img: 'aset/carroll.jpeg', desc: 'Meredakan nyeri pinggang dan pegal linu.' },
+                { id: 'med_12', name: 'Now Calcium & Magnesium', price: 15000, img: 'aset/calcium.jpeg', desc: 'Mendukung perkembangan otak dan fungsi kognitif.' },
+                { id: 'med_13', name: 'Beras Merah', price: 15000, img: 'aset/beras.jpeg', desc: 'Membantu menjaga berat badan & sumber serat tinggi.' },
+                { id: 'med_14', name: 'Avita Glow', price: 15000, img: 'aset/avita.jpeg', desc: 'Membantu menjaga kekuatan dan kepadatan tulang & gigi.' },
+                { id: 'med_15', name: 'Sewa Alat Kesehatan', price: 15000, img: 'aset/sewa.jpeg', desc: 'Sewa alat kesehatan untuk kebutuhan medis.' }
+            ],
+            superfood: [
+                { id: 'sup_1', name: 'Bawang Hitam 200 gr', price: 75000, img: 'aset/bawang1.jpeg', desc: 'Meningkatkan sistem imun & Kesehatan jantung.' },
+                { id: 'sup_2', name: 'Bawang Hitam 95 gr', price: 35000, img: 'aset/bawang2.jpeg', desc: 'Meningkatkan sistem imun & Kesehatan jantung.' },
+                { id: 'sup_3', name: 'Madu Bawang Hitam 300 gr', price: 80000, img: 'aset/bawang3.jpeg', desc: 'Meningkatkan sistem imun & Kesehatan jantung.' },
+                { id: 'sup_4', name: 'Madu Bawang Hitam 125 gr', price: 65000, img: 'aset/bawang4.jpeg', desc: 'Meningkatkan sistem imun & Kesehatan jantung.' },
+                { id: 'sup_5', name: 'Bawang Hitam Kulit Basah 200 gr', price: 40000, img: 'aset/bawang5.jpeg', desc: 'Meningkatkan sistem imun & Kesehatan jantung.' },
+                { id: 'sup_6', name: 'Bawang Hitam Kulit Basah 95 gr', price: 20000, img: 'aset/bawang6.jpeg', desc: 'Meningkatkan sistem imun & Kesehatan jantung.' },
+                { id: 'sup_7', name: 'Promo Harga Garlixa Kulit Basah', price: 18000, img: 'aset/bawang7.jpeg', desc: 'Meningkatkan sistem imun & Kesehatan jantung.' },
+                { id: 'sup_8', name: 'Promo Spesial Garlixa Kulir Kering', price: 30000, img: 'aset/bawang8.jpeg', desc: 'Meningkatkan sistem imun & Kesehatan jantung.' },
+                { id: 'sup_9', name: 'Konsiyasi Produk Super Food', price: 18000, img: 'aset/collagen.jpeg', desc: 'Meningkatkan sistem imun & Kesehatan jantung.' }
+            ],
+               bross: [
+                { id: 'bross_1', name: 'Purple Brooch', price: 50000, img: 'aset/brooch.jpeg', desc: 'Bross premium cocok untuk hadiah.' },
+                { id: 'bross_2', name: 'Gold Brooch', price: 95000, img: 'aset/gold.jpeg', desc: 'Bross premium cocok untuk hadiah.' },
+                { id: 'bross_3', name: 'Kupu Premium Brooch', price: 35000, img: 'aset/kupu.jpeg', desc: 'Bross premium cocok untuk hadiah.' },
+                { id: 'bross_4', name: 'Grey Pink Brooch', price: 130000, img: 'aset/grey.jpeg', desc: 'Bross premium cocok untuk hadiah.' },
+                { id: 'bross_5', name: 'LingLing Brooch', price: 100000, img: 'aset/ling.jpeg', desc: 'Bross premium cocok untuk hadiah.' },
+                { id: 'bross_6', name: 'Mix Brooches', price: 50000, img: 'aset/mix.jpeg', desc: 'Bross premium cocok untuk hadiah.' },
+                { id: 'bross_7', name: 'Green Orange Brooch', price: 70000, img: 'aset/orange.jpeg', desc: 'Bross premium cocok untuk hadiah.' },
+                { id: 'bross_8', name: 'Smooth Pink Brooch', price: 70000, img: 'aset/pink.jpeg', desc: 'Bross premium cocok untuk hadiah.' },
+                { id: 'bross_9', name: 'Purple Brooch', price: 45000, img: 'aset/purple.jpeg', desc: 'Bross premium cocok untuk hadiah.' },
+                { id: 'bross_10', name: 'Gold Red Brooch', price: 70000, img: 'aset/red.jpeg', desc: 'Bross premium cocok untuk hadiah.' },
+                { id: 'bross_11', name: 'Broken White Brooch', price: 75000, img: 'aset/white.jpeg', desc: 'Bross premium cocok untuk hadiah.' },
+                { id: 'bross_12', name: 'Xie Xie Brooch', price: 150000, img: 'aset/xie.jpeg', desc: 'Bross premium cocok untuk hadiah.' },
+            ],
+                lemari: [
+                { id: 'lemari_1', name: 'Tas Pink Cantik', price: 25000, img: 'aset/tas10.jpeg', desc: 'Tas simple untuk aktivitasmu.' },
+                { id: 'lemari_2', name: 'Tas kanvas Rajut', price: 40000, img: 'aset/tas11.jpeg', desc: 'Tas kanvas rajut untuk aktivitasmu.' },
+                { id: 'lemari_3', name: 'Tas Cantik', price: 25000, img: 'aset/tas8.jpeg', desc: 'Tas simple untuk aktivitasmu.' },
+                { id: 'lemari_4', name: 'Tas Batik', price: 25000, img: 'aset/tas9.jpeg', desc: 'Tas batik cantik untuk aktivitasmu.' },
+                { id: 'lemari_5', name: 'Tas Rajut Cantik', price: 75000, img: 'aset/tas6.jpeg', desc: 'Tas rajut cantik untuk aktivitasmu.' },
+                { id: 'lemari_6', name: 'Clutch Cantik', price: 40000, img: 'aset/tas7.jpeg', desc: 'Clutch simple untuk aktivitasmu.' },
+                { id: 'lemari_7', name: 'Tas Kulit Cantik', price: 45000, img: 'aset/tas5.jpeg', desc: 'Tas kulit cantik untuk aktivitasmu.' },
+                { id: 'lemari_8', name: 'Tas Ungu Cantik', price: 60000, img: 'aset/tas3.jpeg', desc: 'Tas ungu cantik untuk aktivitasmu.' },
+                { id: 'lemari_9', name: 'Tas Kanvas Cantik', price: 25000, img: 'aset/tas2.jpeg', desc: 'Tas kanvas cantik untuk aktivitasmu.' },
+                { id: 'lemari_10', name: 'Tas Jinjing pesta', price: 85000, img: 'aset/tas4.jpeg', desc: 'Tas jinjing pesta untuk pancarkan pesonamu.' },
+                { id: 'lemari_11', name: 'Tas Rajut Krem', price: 75000, img: 'aset/tas1.jpeg', desc: 'Tas rajut krem untuk aktivitasmu.' },
+                { id: 'lemari_12', name: 'Tas Jeans ransel', price: 150000, img: 'aset/tas.jpeg', desc: 'Tas Jeans Ransel untuk aktivitasmu.' }
+                
+            ],
+           slondok: [
+                { id: 'slo_1', name: 'Krupuk Slondok', price: 253500, img: 'aset/slondok.jpeg', desc: '1 bal (16 pack @300 gram mentah) R0 253.500.' },
+              
+            ],
+            nira: [
+                { id: 'nira_1', name: 'Mainan Edukasi Al-Qolam', price: 200000, img: 'aset/edukasi.jpeg', desc: 'Mainan edukasi belajar Quran untuk anak-anak.' },
+                { id: 'nira_2', name: 'Kandang hamster', price: 60000, img: 'aset/hamster.jpeg', desc: 'Kandang hamster dengan Treadmill.' },
+                { id: 'nira_3', name: 'Baby Walker 2nd', price: 126000, img: 'aset/mainan.jpeg', desc: 'baby walker masih normal dan siap pakai.' },
+                { id: 'nira_4', name: 'Stroller 2nd', price: 200000, img: 'aset/stroller.jpeg', desc: 'Stroller untuk kebutuhan bayi.' },
+                
+            ],     
+            mc: [
+                { id: 'mc_1', name: 'Freelance MC', price:200000, img: 'aset/mc.jpeg', desc: 'MC Profesional untuk pernikahan dan event.' },                         
+            ],
+            marketing: [
+                { id: 'mar_1', name: 'Freelance Marketing', price: 200000, img: 'aset/mc.jpeg', desc: 'Marketing Profesional untuk pernikahan dan event.' },
+            ],
+           
+            
             buku: Array.from({length: 10}, (_, i) => ({ id: `buk_${i+1}`, name: `Buku Inspirasi Nitta ${i+1}`, price: 85000 + (i*5000), img: `https://picsum.photos/seed/buk_${i+1}/400/400`, desc: 'Kumpulan cerita inspiratif & motivasi.' }))
         };
 
@@ -361,8 +433,9 @@
 
                 card.innerHTML = `
                     ${badgeHtml}
-                    <div class="relative w-full pt-[100%] bg-slate-50">
-                        <img src="${prod.img}" alt="${prod.name}" class="absolute top-0 left-0 w-full h-full object-cover" onload="this.classList.add('loaded')">
+                   <div class="relative w-full aspect-[2/3] bg-slate-50 flex items-center justify-center p-2">
+        <img src="${prod.img}" alt="${prod.name}" class="w-full h-full object-contain drop-shadow-sm" onload="this.classList.add('loaded')">
+    </div>
                     </div>
                     <div class="p-3.5 flex-1 flex flex-col">
                         <h3 class="font-bold text-sm text-slate-800 leading-tight mb-1 line-clamp-2">${prod.name}</h3>
