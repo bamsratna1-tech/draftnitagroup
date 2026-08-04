@@ -442,15 +442,22 @@
             if (currentDivisionId === 'medika') {
                 const waMessage = encodeURIComponent("Halo Admin Apotek Nitta Medika, saya butuh obat/produk kesehatan yang tidak ada di etalase katalog. Apakah bisa dibantu?");
                 const banner = document.createElement('div');
-                banner.className = 'col-span-2 bg-gradient-to-br from-slate-800 to-black rounded-[20px] p-4 flex items-center justify-between shadow-md border border-slate-700 mb-1';
+                // TRIK HYBRID: col-span-2 di HP (Banner), tapi md:col-span-1 di Desktop (Seukuran Kartu Produk)
+                banner.className = 'col-span-2 md:col-span-1 md:h-full bg-gradient-to-br from-slate-800 to-black rounded-[20px] p-4 md:p-5 flex flex-row md:flex-col items-center justify-between md:justify-center shadow-md border border-slate-700 cursor-pointer group hover:border-slate-500 transition-all';
+                banner.onclick = () => window.open(`https://wa.me/${waNumber}?text=${waMessage}`, '_blank');
+                
                 banner.innerHTML = `
-                    <div class="flex-1 pr-3">
-                        <h4 class="font-bold text-white text-sm mb-1">Butuh Obat Lain?</h4>
-                        <p class="text-[10px] text-slate-300 leading-relaxed">Tanyakan langsung ke admin kami untuk produk apotek yang tidak ada di etalase.</p>
+                    <div class="flex-1 pr-3 md:pr-0 md:text-center md:flex md:flex-col md:justify-center">
+                        <div class="hidden md:flex w-12 h-12 bg-slate-700/50 rounded-full mx-auto items-center justify-center text-green-400 mb-3 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-pills text-xl"></i>
+                        </div>
+                        <h4 class="font-bold text-white text-sm mb-1 md:mt-2">Butuh Obat Lain?</h4>
+                        <p class="text-[10px] text-slate-300 leading-relaxed md:mb-4">Tanyakan admin untuk produk yang tidak ada di etalase.</p>
                     </div>
-                    <button onclick="window.open('https://wa.me/${waNumber}?text=${waMessage}', '_blank')" class="bg-green-500 hover:bg-green-600 text-white w-12 h-12 rounded-xl flex items-center justify-center shadow-lg shadow-green-500/30 transition-transform active:scale-95 shrink-0">
-                        <i class="fab fa-whatsapp text-2xl"></i>
-                    </button>
+                    <div class="bg-green-500 text-white w-12 h-12 md:w-full md:py-2.5 md:h-auto md:mt-auto rounded-xl flex items-center justify-center shadow-lg shadow-green-500/30 group-hover:scale-105 md:group-hover:scale-100 md:group-hover:bg-green-400 transition-all shrink-0 gap-2">
+                        <i class="fab fa-whatsapp text-2xl md:text-sm"></i>
+                        <span class="hidden md:inline text-xs font-bold">Chat Admin</span>
+                    </div>
                 `;
                 container.appendChild(banner);
             } 
@@ -458,15 +465,22 @@
             else if (currentDivisionId === 'bross') {
                 const waMessage = encodeURIComponent("Halo Admin Nitta Bross, saya ingin melihat koleksi bross lainnya yang tidak ada di etalase katalog. Boleh minta katalog lengkapnya?");
                 const banner = document.createElement('div');
-                banner.className = 'col-span-2 bg-gradient-to-br from-slate-800 to-black rounded-[20px] p-4 flex items-center justify-between shadow-md border border-slate-700 mb-1';
+                
+                banner.className = 'col-span-2 md:col-span-1 md:h-full bg-gradient-to-br from-slate-800 to-black rounded-[20px] p-4 md:p-5 flex flex-row md:flex-col items-center justify-between md:justify-center shadow-md border border-slate-700 cursor-pointer group hover:border-slate-500 transition-all';
+                banner.onclick = () => window.open(`https://wa.me/${waNumber}?text=${waMessage}`, '_blank');
+                
                 banner.innerHTML = `
-                    <div class="flex-1 pr-3">
-                        <h4 class="font-bold text-white text-sm mb-1">Cari Koleksi Bross Lainnya?</h4>
-                        <p class="text-[10px] text-slate-300 leading-relaxed">Kami memiliki banyak model cantik lainnya. Hubungi admin untuk melihat katalog lengkap.</p>
+                    <div class="flex-1 pr-3 md:pr-0 md:text-center md:flex md:flex-col md:justify-center">
+                        <div class="hidden md:flex w-12 h-12 bg-slate-700/50 rounded-full mx-auto items-center justify-center text-green-400 mb-3 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-gem text-xl"></i>
+                        </div>
+                        <h4 class="font-bold text-white text-sm mb-1 md:mt-2">Cari Koleksi Lain?</h4>
+                        <p class="text-[10px] text-slate-300 leading-relaxed md:mb-4">Hubungi admin untuk melihat katalog bross lengkap kami.</p>
                     </div>
-                    <button onclick="window.open('https://wa.me/${waNumber}?text=${waMessage}', '_blank')" class="bg-green-500 hover:bg-green-600 text-white w-12 h-12 rounded-xl flex items-center justify-center shadow-lg shadow-green-500/30 transition-transform active:scale-95 shrink-0">
-                        <i class="fab fa-whatsapp text-2xl"></i>
-                    </button>
+                    <div class="bg-green-500 text-white w-12 h-12 md:w-full md:py-2.5 md:h-auto md:mt-auto rounded-xl flex items-center justify-center shadow-lg shadow-green-500/30 group-hover:scale-105 md:group-hover:scale-100 md:group-hover:bg-green-400 transition-all shrink-0 gap-2">
+                        <i class="fab fa-whatsapp text-2xl md:text-sm"></i>
+                        <span class="hidden md:inline text-xs font-bold">Chat Admin</span>
+                    </div>
                 `;
                 container.appendChild(banner);
             }
