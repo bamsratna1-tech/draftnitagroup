@@ -228,7 +228,7 @@
                     <!-- Injected here -->
                 </div>
 
-                <!-- Formulir Data Pemesan (Otomatis Sembunyi Jika Keranjang Kosong) -->
+                <!-- Formulir Data Pemesan -->
                 <div id="customerFormSection" class="hidden bg-white p-5 rounded-[20px] border border-slate-200 shadow-sm mb-4">
                     <h4 class="font-bold text-slate-800 text-sm mb-4 border-b border-slate-100 pb-2 flex items-center gap-2">
                         <i class="fas fa-truck text-slate-400"></i> Informasi Pengiriman
@@ -284,8 +284,11 @@
     </div>
 
     <script>
-        // --- DATA ---
+        // --- CONFIG & INTEGRASI GOOGLE SHEETS ---
         const waNumber = "6281233250989"; 
+        
+        // BROO, TEMPEL LINK GOOGLE SHEETS CSV LU DI DALAM TANDA KUTIP INI:
+        const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTF0tFUByLrE9Dc89L8urFEJJeCxm-0mxTpH0WkDiEN6jtJHDCbT5-OVgQktsIhwUG6feWfQGH_dL7V/pub?gid=0&single=true&output=csv'; 
 
         const divisions = [
             { id: 'medika', name: 'Apotek Nitta Medika', img: 'aset/apotek.webp' },
@@ -299,8 +302,9 @@
             { id: 'buku', name: 'Buku Nitta', img: 'aset/buku.webp' }
         ];
 
-        const productsData = {
-           medika: [
+        // --- DATA BAWAAN (JANGAN DIHAPUS BIAR GAK BLANK/KOSONG) ---
+        const dataBawaan = {
+            medika: [
                 { id: 'med_1', name: 'Nutri-Well', price: 317000, img: 'aset/nutri.webp', desc: 'Vitamin penjaga kesehatan tulang dan imunitas.' },
                 { id: 'med_2', name: 'Now Vitamin D-3', price: 56000, img: 'aset/nou.webp', desc: 'Suplemen vitamin D-3 untuk kesehatan tulang.' },
                 { id: 'med_3', name: 'Magnesium Glycinate', price: 76000, img: 'aset/magnesium2.webp', desc: 'Suplemen magnesium untuk kesehatan otot dan saraf.' },
@@ -394,12 +398,69 @@
             ]
         };
 
+        // Wadah kosong yang nanti isinya = Data Bawaan + Data Google Sheets
+        let productsData = {};
+
         // State Aplikasi
         let cart = {}; 
         let currentDivisionId = null; 
 
-        // --- UTILITIES ---
+        // --- SISTEM TARIK DATA HYBRID (ANTI BLANK/NGEHANG) ---
+        async function loadProductsFromSheets() {
+            // 1. Kloning data lama dulu biar web selalu punya isi
+            productsData = JSON.parse(JSON.stringify(dataBawaan));
 
+            // 2. Cek apakah link CSV valid
+            if (!csvUrl.startsWith('http')) {
+                console.log("Menjalankan Katalog dengan Data Bawaan (Link CSV belum diisi)");
+                return;
+            }
+
+            try {
+                // 3. Tarik data dari Google Sheets
+                const response = await fetch(csvUrl);
+                if (!response.ok) throw new Error("Gagal terhubung ke Google Sheets");
+                
+                const data = await response.text();
+                const baris = data.split('\n');
+
+                // 4. Masukin data baru mulai dari baris kedua (melewati header)
+                for (let i = 1; i < baris.length; i++) {
+                    if (baris[i].trim() === '') continue;
+
+                    const kolom = baris[i].split(',');
+                    if (kolom.length < 5) continue; // Pastikan isi Excelnya bener (ada 5 kolom)
+
+                    const name = kolom[0].trim();
+                    const price = parseFloat(kolom[1].trim()) || 0;
+                    const img = kolom[2].trim();
+                    const desc = kolom[3].trim();
+                    const categoryName = kolom[4].trim().toLowerCase();
+
+                    const id = 'gsheet_prod_' + i; // ID spesial buat produk dari Excel
+
+                    // Cek kategori secara otomatis
+                    let targetDivId = 'lemari'; // Kalau klien salah ketik kategori, otomatis masuk ke Lemari Kedua
+                    divisions.forEach(div => {
+                        if (categoryName.includes(div.id.toLowerCase()) || categoryName.includes(div.name.toLowerCase())) {
+                            targetDivId = div.id;
+                        }
+                    });
+
+                    // 5. Gabungin produk baru ke wadah yang udah ada isi lamanya
+                    if (productsData[targetDivId]) {
+                        productsData[targetDivId].push({ id, name, price, img, desc });
+                    } else {
+                        productsData[targetDivId] = [{ id, name, price, img, desc }];
+                    }
+                }
+            } catch (error) {
+                console.error("Gagal menarik data Google Sheets:", error);
+                // Biarpun error (misal pas klien salah ngapus isi link), web akan tetep aman pakai Data Bawaan!
+            }
+        }
+
+        // --- UTILITIES ---
         const formatRupiah = (number) => {
             return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(number);
         };
@@ -413,23 +474,17 @@
         }
 
         // --- RENDER FUNCTIONS ---
-
-       function renderDivisions() {
+        function renderDivisions() {
             const container = document.getElementById('divisionsContainer');
             container.innerHTML = '';
 
             divisions.forEach((div, index) => {
                 const card = document.createElement('div');
-                
-                // Logika item ganjil ke tengah dimatikan agar rapi di layar laptop & HP
-                const layoutClass = "";
-
-                card.className = `bg-white rounded-[24px] shadow-sm border border-slate-200 p-4 flex flex-col items-center justify-center text-center cursor-pointer transition-transform transform active:scale-95 swing-on-scroll ${layoutClass}`;
+                card.className = `bg-white rounded-[24px] shadow-sm border border-slate-200 p-4 flex flex-col items-center justify-center text-center cursor-pointer transition-transform transform active:scale-95 swing-on-scroll`;
                 card.style.animationDelay = `${index * 0.1}s`;
 
                 card.innerHTML = `
                     <div class="w-20 h-20 rounded-full overflow-hidden border-[3px] border-slate-100 mb-3 shadow-sm bg-slate-100 flex items-center justify-center flex-shrink-0">
-                        <!-- Perbaikan: Tambah onload agar gambar muncul dari transparan -->
                         <img src="${div.img}" alt="${div.name}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); this.src='https://placehold.co/400x400/f1f5f9/0f172a?text=Error'" class="w-full h-full object-cover">
                     </div>
                     <h3 class="font-bold text-sm text-slate-800 leading-tight">${div.name}</h3>
@@ -460,6 +515,8 @@
             document.getElementById('catalogPage').classList.add('active');
             document.getElementById('catalogTitle').innerText = division.name;
             window.scrollTo(0, 0);
+
+            // Langsung render produk dari memori, instan secepat kilat!
             renderProducts();
             updateCartUI();
         }
@@ -474,11 +531,10 @@
             const container = document.getElementById('productsContainer');
             container.innerHTML = '';
 
-           // --- CTA KHUSUS APOTEK NITTA MEDIKA ---
+            // --- CTA KHUSUS APOTEK NITTA MEDIKA ---
             if (currentDivisionId === 'medika') {
                 const waMessage = encodeURIComponent("Halo Admin Apotek Nitta Medika, saya butuh obat/produk kesehatan yang tidak ada di etalase katalog. Apakah bisa dibantu?");
                 const banner = document.createElement('div');
-                // TRIK HYBRID: col-span-2 di HP (Banner), tapi md:col-span-1 di Desktop (Seukuran Kartu Produk)
                 banner.className = 'col-span-2 md:col-span-1 md:h-full bg-gradient-to-br from-slate-800 to-black rounded-[20px] p-4 md:p-5 flex flex-row md:flex-col items-center justify-between md:justify-center shadow-md border border-slate-700 cursor-pointer group hover:border-slate-500 transition-all';
                 banner.onclick = () => window.open(`https://wa.me/${waNumber}?text=${waMessage}`, '_blank');
                 
@@ -520,9 +576,16 @@
                 `;
                 container.appendChild(banner);
             }
-            // --------------------------------------
 
             const productsToRender = productsData[currentDivisionId] || [];
+
+            if (productsToRender.length === 0) {
+                const emptyState = document.createElement('div');
+                emptyState.className = 'col-span-2 md:col-span-5 text-center py-16 text-slate-400';
+                emptyState.innerHTML = `<i class="fas fa-box-open text-3xl mb-2"></i><p class="text-sm font-medium">Belum ada produk untuk kategori ini.</p>`;
+                container.appendChild(emptyState);
+                return;
+            }
 
             productsToRender.forEach(prod => {
                 const qty = cart[prod.id] || 0;
@@ -536,13 +599,11 @@
                 }
 
                 card.innerHTML = `
-                    <!-- PEMBUNGKUS BADGE DENGAN ID SPESIFIK -->
                     <div id="badge-${prod.id}">
                         ${badgeHtml}
                     </div>
                     <div class="relative w-full aspect-[2/3] bg-slate-50 flex items-center justify-center p-2 cursor-pointer group" onclick="openImageZoom('${prod.id}')">
-                        <!-- TAMBAHAN: loading="lazy" (Mempercepat loading web) -->
-                        <img src="${prod.img}" alt="${prod.name}" loading="lazy" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-105" onload="this.classList.add('loaded')">
+                        <img src="${prod.img}" alt="${prod.name}" loading="lazy" class="w-full h-full object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-105" onload="this.classList.add('loaded')" onerror="this.src='https://placehold.co/400x400/f1f5f9/0f172a?text=Foto'">
                         <div class="absolute inset-0 bg-black/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                             <div class="bg-white/90 w-10 h-10 rounded-full flex items-center justify-center text-slate-800 shadow-sm backdrop-blur-sm">
                                 <i class="fas fa-search-plus text-sm"></i>
@@ -554,7 +615,6 @@
                         <p class="text-[10px] text-slate-400 mb-2 line-clamp-1">${prod.desc}</p>
                         <div class="font-black text-slate-900 text-sm mb-4">${formatRupiah(prod.price)}</div>
                         
-                        <!-- PEMBUNGKUS TOMBOL DENGAN ID SPESIFIK -->
                         <div id="action-${prod.id}" class="mt-auto">
                             ${qty === 0 ? `
                                 <button onclick="updateCart('${prod.id}', 1)" class="w-full bg-slate-800 hover:bg-black text-white text-xs font-bold py-2.5 rounded-xl transition-colors flex justify-center items-center gap-1 active:scale-95 shadow-sm shadow-slate-800/30">
@@ -578,11 +638,9 @@
             });
         }
 
-        // --- FUNGSI UPDATE UI PINTAR ---
         function updateProductCardUI(productId) {
             const qty = cart[productId] || 0;
             
-            // Update bagian badge
             const badgeContainer = document.getElementById(`badge-${productId}`);
             if (badgeContainer) {
                 badgeContainer.innerHTML = qty > 0 
@@ -590,7 +648,6 @@
                     : '';
             }
 
-            // Update bagian action (tombol)
             const actionContainer = document.getElementById(`action-${productId}`);
             if (actionContainer) {
                 actionContainer.innerHTML = qty === 0 
@@ -613,8 +670,6 @@
             }
         }
 
-        // --- IMAGE ZOOM (LIGHTBOX) LOGIC ---
-        
         function openImageZoom(productId) {
             const product = getProductById(productId);
             if (!product) return;
@@ -650,8 +705,6 @@
             }, 300);
         }
 
-        // --- CART LOGIC ---
-
         function updateCart(productId, change) {
             const currentQty = cart[productId] || 0;
             const newQty = currentQty + change;
@@ -662,9 +715,7 @@
                 cart[productId] = newQty;
             }
 
-            // PERBAIKAN: Hanya update elemen UI secara spesifik tanpa render ulang seluruh produk
             updateProductCardUI(productId); 
-            
             updateCartUI();
             
             if(!document.getElementById('cartModal').classList.contains('hidden')) {
@@ -704,8 +755,6 @@
             }
         }
 
-        // --- CART MODAL ---
-
         function openCart() {
             const modal = document.getElementById('cartModal');
             const content = document.getElementById('cartContent');
@@ -741,7 +790,7 @@
             const listContainer = document.getElementById('cartItemsList');
             const emptyMsg = document.getElementById('emptyCartMessage');
             const finalTotal = document.getElementById('finalTotal');
-            const formSection = document.getElementById('customerFormSection'); // Ambil elemen form
+            const formSection = document.getElementById('customerFormSection'); 
             
             const { items, totalPrice } = getCartDetails();
 
@@ -750,19 +799,19 @@
             if (items.length === 0) {
                 listContainer.innerHTML = '';
                 emptyMsg.classList.remove('hidden');
-                formSection.classList.add('hidden'); // Sembunyikan form kalau keranjang kosong
+                formSection.classList.add('hidden'); 
                 return;
             }
 
             emptyMsg.classList.add('hidden');
-            formSection.classList.remove('hidden'); // Tampilkan form kalau ada belanjaan
+            formSection.classList.remove('hidden'); 
             
             let html = '';
 
             items.forEach(({ product, qty }) => {
                 html += `
                     <div class="flex items-center gap-4 bg-white p-3 rounded-[20px] border border-slate-200 shadow-sm">
-                        <img src="${product.img}" alt="${product.name}" loading="lazy" class="w-16 h-16 rounded-xl object-cover bg-slate-50 shrink-0" onload="this.classList.add('loaded')" style="opacity: 1;">
+                        <img src="${product.img}" alt="${product.name}" loading="lazy" class="w-16 h-16 rounded-xl object-cover bg-slate-50 shrink-0" onload="this.classList.add('loaded')" onerror="this.src='https://placehold.co/400x400/f1f5f9/0f172a?text=Foto'" style="opacity: 1;">
                         <div class="flex-1 min-w-0">
                             <h4 class="font-bold text-sm leading-tight text-slate-800 truncate">${product.name}</h4>
                             <div class="text-slate-900 font-black text-sm mt-1">${formatRupiah(product.price)}</div>
@@ -783,8 +832,7 @@
             listContainer.innerHTML = html;
         }
 
-        // --- WHATSAPP INTEGRATION ---
-
+      // --- 10. WHATSAPP & GOOGLE SHEETS INTEGRATION ---
         function checkoutToWA() {
             const { items, totalPrice } = getCartDetails();
             
@@ -793,18 +841,38 @@
                 return;
             }
 
-            // Ambil data dari input form
             const custName = document.getElementById('custName').value.trim();
             const custWA = document.getElementById('custWA').value.trim();
             const custAddress = document.getElementById('custAddress').value.trim();
 
-            // Validasi: Cek apakah ada kolom yang kosong
             if (!custName || !custWA || !custAddress) {
                 alert("Mohon lengkapi Nama, No. WhatsApp, dan Alamat Anda sebelum melanjutkan pesanan.");
                 return;
             }
 
-            // Mulai merangkai pesan WhatsApp
+            // 1. Siapin list barang buat dimasukin ke Excel
+            let detailPesanan = '';
+            items.forEach((item) => {
+                detailPesanan += `- ${item.product.name} (${item.qty}x)\n`;
+            });
+
+            // 2. KIRIM DATA KE GOOGLE SHEETS DULU
+            // TEMPEL LINK WEB APP APPS SCRIPT LU DI DALAM TANDA KUTIP INI BROO:
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzPVbTAk2N2gFrZiMFslSa92SVTZxrvphBZHWbFbOasY0jlJCVlBnDGcVRRX1-OvH0y/exec'; 
+            
+            const formData = new FormData();
+            formData.append('nama', custName);
+            formData.append('wa', custWA);
+            formData.append('alamat', custAddress);
+            formData.append('pesanan', detailPesanan);
+            formData.append('total', formatRupiah(totalPrice));
+
+            // Perintah tembak data di balik layar (tanpa pindah halaman)
+            fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
+                .then(() => console.log('Data sukses direkam ke Google Sheets!'))
+                .catch(error => console.error('Gagal rekam data:', error));
+
+            // 3. BARU BUKA WHATSAPPNYA
             let message = `Halo Admin *Nitta Group*, saya ingin melakukan pemesanan.\n\n`;
             
             message += `*📋 DATA PEMESAN*\n`;
@@ -813,7 +881,7 @@
             message += `▪️ Alamat : ${custAddress}\n\n`;
 
             message += `*🛍️ RINCIAN PESANAN*\n`;
-            items.forEach((item, index) => {
+            items.forEach((item) => {
                 message += `▪️ *${item.product.name}*\n`;
                 message += `   ${item.qty} x ${formatRupiah(item.product.price)} = ${formatRupiah(item.product.price * item.qty)}\n`;
             });
@@ -827,9 +895,13 @@
             window.open(waUrl, '_blank');
         }
 
-        // --- INIT ---
+      // --- 11. INIT SAAT WEB DIBUKA ---
         window.onload = () => {
+            // 1. Tampilkan menu kategori detik itu juga (Instan!)
             renderDivisions();
+            
+            // 2. Biarkan sistem nyedot data GSheet jalan di belakang layar tanpa nahan tampilan web
+            loadProductsFromSheets(); 
         };
 
     </script>
